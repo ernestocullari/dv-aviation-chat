@@ -249,16 +249,18 @@ async def voice_transcribe(request: VoiceRequest):
                     raise ValueError("Empty transcription result")
 
         except Exception as stt_error:
-            logger.error(f"STT API error: {stt_error}")
-            raise HTTPException(status_code=500, detail=f"Transcription failed: {str(stt_error)}")
+            error_detail = f"STT API error: {type(stt_error).__name__}: {str(stt_error)}"
+            logger.error(error_detail)
+            raise HTTPException(status_code=500, detail=error_detail)
 
         logger.info(f"Transcription: {transcription}")
 
         return {"text": transcription, "session_id": request.session_id}
 
     except Exception as e:
-        logger.error(f"STT error: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+        error_detail = f"Voice transcription failed: {type(e).__name__}: {str(e)}"
+        logger.error(error_detail)
+        raise HTTPException(status_code=500, detail=error_detail)
 
 @app.post("/api/voice/synthesize")
 async def voice_synthesize(request: TTSRequest):
