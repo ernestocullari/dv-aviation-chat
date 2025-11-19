@@ -234,20 +234,16 @@ async def voice_transcribe(request: VoiceRequest):
 
         # Transcribe using ElevenLabs Speech-to-Text API
         try:
-            # Use ElevenLabs transcribe method with audio file and language
+            # Use ElevenLabs speech_to_text.convert method
             with open(temp_path, "rb") as audio_file:
-                # ElevenLabs SDK requires language code (3-letter ISO 639-3)
-                result = elevenlabs_client.transcribe(
-                    audio=audio_file,
-                    language="eng"  # English - required parameter
+                # ElevenLabs SDK speech-to-text API
+                result = elevenlabs_client.speech_to_text.convert(
+                    model_id="scribe_v2",  # ElevenLabs STT model
+                    file=audio_file,
+                    language_code="en"  # 2-letter ISO 639-1 code for English
                 )
-                # Result is typically a dict with 'text' key
-                if isinstance(result, dict):
-                    transcription = result.get("text", "")
-                elif hasattr(result, 'text'):
-                    transcription = result.text
-                else:
-                    transcription = str(result)
+                # Result has .text attribute
+                transcription = result.text
 
                 if not transcription:
                     raise ValueError("Empty transcription result")
