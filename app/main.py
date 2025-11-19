@@ -232,9 +232,28 @@ async def voice_transcribe(request: VoiceRequest):
         with open(temp_path, "wb") as f:
             f.write(audio_data)
 
-        # Transcribe (Note: ElevenLabs client API may vary - adjust as needed)
-        # This is a placeholder - adjust based on actual elevenlabs SDK
-        transcription = "Voice transcription not yet implemented"
+        # Transcribe using ElevenLabs Speech-to-Text API
+        try:
+            # Use ElevenLabs transcribe method with audio file path
+            with open(temp_path, "rb") as audio_file:
+                # ElevenLabs SDK expects file object for transcription
+                result = elevenlabs_client.transcribe(
+                    audio=audio_file
+                )
+                # Result is typically a dict with 'text' key
+                if isinstance(result, dict):
+                    transcription = result.get("text", "")
+                elif hasattr(result, 'text'):
+                    transcription = result.text
+                else:
+                    transcription = str(result)
+
+                if not transcription:
+                    raise ValueError("Empty transcription result")
+
+        except Exception as stt_error:
+            logger.error(f"STT API error: {stt_error}")
+            raise HTTPException(status_code=500, detail=f"Transcription failed: {str(stt_error)}")
 
         logger.info(f"Transcription: {transcription}")
 
