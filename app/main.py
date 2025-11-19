@@ -257,6 +257,9 @@ async def voice_transcribe(request: VoiceRequest):
 
         return {"text": transcription, "session_id": request.session_id}
 
+    except HTTPException:
+        # Re-raise HTTPExceptions (already have proper status code and detail)
+        raise
     except Exception as e:
         error_detail = f"Voice transcription failed: {type(e).__name__}: {str(e)}"
         logger.error(error_detail)
