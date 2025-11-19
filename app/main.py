@@ -20,7 +20,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse, FileResponse
 from pydantic import BaseModel
 from anthropic import Anthropic
-from elevenlabs import ElevenLabs
+from elevenlabs.client import ElevenLabs
 import json
 import os
 from pathlib import Path
