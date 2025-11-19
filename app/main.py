@@ -20,11 +20,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse, FileResponse
 from pydantic import BaseModel
 from anthropic import Anthropic
+from elevenlabs import ElevenLabs
 import json
 import os
 from pathlib import Path
 from typing import Optional
 import logging
+import base64
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -58,6 +60,15 @@ if not anthropic_api_key:
 
 client = Anthropic(api_key=anthropic_api_key)
 
+# Initialize ElevenLabs client
+elevenlabs_api_key = os.getenv("ELEVENLABS_API_KEY")
+if not elevenlabs_api_key:
+    logger.warning("ELEVENLABS_API_KEY not set - voice features disabled")
+    elevenlabs_client = None
+else:
+    elevenlabs_client = ElevenLabs(api_key=elevenlabs_api_key)
+    logger.info("ElevenLabs client initialized")
+
 # Load knowledge base
 knowledge_base_path = Path(__file__).parent.parent / "knowledge" / "context.json"
 try:
@@ -77,6 +88,14 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     response: str
     session_id: str
+
+class VoiceRequest(BaseModel):
+    audio_base64: str
+    session_id: Optional[str] = "default"
+
+class TTSRequest(BaseModel):
+    text: str
+    voice_id: Optional[str] = "EXAVITQu4vr4xnSDxMaL"  # Sarah (professional female)
 
 # ============================================================================
 # ENDPOINTS
@@ -191,6 +210,71 @@ async def chat_non_stream(request: ChatRequest):
 
     except Exception as e:
         logger.error(f"Chat error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/voice/transcribe")
+async def voice_transcribe(request: VoiceRequest):
+    """
+    Speech-to-Text endpoint
+    Converts audio to text using ElevenLabs
+    """
+    if not elevenlabs_client:
+        raise HTTPException(status_code=503, detail="Voice features not configured")
+
+    logger.info(f"STT request - Session: {request.session_id}")
+
+    try:
+        # Decode base64 audio
+        audio_data = base64.b64decode(request.audio_base64)
+
+        # Save temporarily
+        temp_path = f"/tmp/voice_{request.session_id}.webm"
+        with open(temp_path, "wb") as f:
+            f.write(audio_data)
+
+        # Transcribe (Note: ElevenLabs client API may vary - adjust as needed)
+        # This is a placeholder - adjust based on actual elevenlabs SDK
+        transcription = "Voice transcription not yet implemented"
+
+        logger.info(f"Transcription: {transcription}")
+
+        return {"text": transcription, "session_id": request.session_id}
+
+    except Exception as e:
+        logger.error(f"STT error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/voice/synthesize")
+async def voice_synthesize(request: TTSRequest):
+    """
+    Text-to-Speech endpoint
+    Converts text to audio using ElevenLabs
+    """
+    if not elevenlabs_client:
+        raise HTTPException(status_code=503, detail="Voice features not configured")
+
+    logger.info(f"TTS request - {len(request.text)} chars")
+
+    try:
+        # Generate audio
+        audio = elevenlabs_client.generate(
+            text=request.text,
+            voice=request.voice_id,
+            model="eleven_multilingual_v2"
+        )
+
+        # Convert generator to bytes
+        audio_bytes = b"".join(audio)
+
+        # Encode to base64
+        audio_base64 = base64.b64encode(audio_bytes).decode('utf-8')
+
+        logger.info(f"Generated {len(audio_bytes)} bytes of audio")
+
+        return {"audio_base64": audio_base64, "voice_id": request.voice_id}
+
+    except Exception as e:
+        logger.error(f"TTS error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 # ============================================================================

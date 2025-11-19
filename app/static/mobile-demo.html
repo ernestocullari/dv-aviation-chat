@@ -82,6 +82,18 @@
                 messageDiv.className = 'message bot';
                 const p = document.createElement('p');
                 messageDiv.appendChild(p);
+
+                // Add speaker button
+                const speakerBtn = document.createElement('button');
+                speakerBtn.className = 'speaker-button';
+                speakerBtn.innerHTML = '🔊';
+                speakerBtn.title = 'Play audio';
+                speakerBtn.onclick = function() {
+                    const fullText = p.textContent || p.innerText;
+                    playBotResponse(fullText, this);
+                };
+                messageDiv.appendChild(speakerBtn);
+
                 messagesContainer.appendChild(messageDiv);
 
                 // Read SSE stream
@@ -139,6 +151,113 @@
             formatted = formatted.replace(/^[•\-\*]\s+(.+)$/gm, '<span class="bullet">• $1</span>');
 
             return formatted;
+        }
+
+        // Voice recording variables
+        let mediaRecorder = null;
+        let audioChunks = [];
+        let isRecording = false;
+
+        async function toggleVoiceRecording() {
+            if (!isRecording) {
+                // Start recording
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    mediaRecorder = new MediaRecorder(stream);
+                    audioChunks = [];
+
+                    mediaRecorder.ondataavailable = (event) => {
+                        audioChunks.push(event.data);
+                    };
+
+                    mediaRecorder.onstop = async () => {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                        await sendVoiceMessage(audioBlob);
+
+                        // Stop all tracks
+                        stream.getTracks().forEach(track => track.stop());
+                    };
+
+                    mediaRecorder.start();
+                    isRecording = true;
+
+                    document.getElementById('micButton').classList.add('recording');
+                    document.getElementById('micIcon').textContent = '⏹️';
+                } catch (error) {
+                    console.error('Microphone access denied:', error);
+                    alert('Please allow microphone access to use voice input');
+                }
+            } else {
+                // Stop recording
+                mediaRecorder.stop();
+                isRecording = false;
+
+                document.getElementById('micButton').classList.remove('recording');
+                document.getElementById('micIcon').textContent = '🎤';
+            }
+        }
+
+        async function sendVoiceMessage(audioBlob) {
+            // Show typing indicator
+            document.getElementById('typingIndicator').classList.add('active');
+
+            try {
+                // Convert blob to base64
+                const reader = new FileReader();
+                reader.readAsDataURL(audioBlob);
+
+                reader.onloadend = async () => {
+                    const base64Audio = reader.result.split(',')[1];
+
+                    // Send to STT endpoint (placeholder - implement when backend ready)
+                    // const sttResponse = await fetch(`${API_URL}/api/voice/transcribe`, {
+                    //     method: 'POST',
+                    //     headers: { 'Content-Type': 'application/json' },
+                    //     body: JSON.stringify({ audio_base64: base64Audio, session_id: sessionId })
+                    // });
+                    // const { text } = await sttResponse.json();
+
+                    // For now, use a placeholder
+                    const text = "Voice message received (transcription pending)";
+
+                    // Hide typing indicator
+                    document.getElementById('typingIndicator').classList.remove('active');
+
+                    // Add as user message and proceed with chat
+                    document.getElementById('chatInput').value = text;
+                    sendMessage();
+                };
+            } catch (error) {
+                console.error('Voice message error:', error);
+                document.getElementById('typingIndicator').classList.remove('active');
+            }
+        }
+
+        async function playBotResponse(text, buttonElement) {
+            try {
+                buttonElement.classList.add('playing');
+
+                // Request TTS audio
+                const response = await fetch(`${API_URL}/api/voice/synthesize`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: text })
+                });
+
+                const { audio_base64 } = await response.json();
+
+                // Convert base64 to audio and play
+                const audioPlayer = document.getElementById('audioPlayer');
+                audioPlayer.src = `data:audio/mp3;base64,${audio_base64}`;
+                audioPlayer.play();
+
+                audioPlayer.onended = () => {
+                    buttonElement.classList.remove('playing');
+                };
+            } catch (error) {
+                console.error('TTS error:', error);
+                buttonElement.classList.remove('playing');
+            }
         }
 
         function addMessage(text, sender) {
@@ -900,6 +1019,50 @@
             cursor: not-allowed;
         }
 
+        .voice-button {
+            background: var(--cream-soft);
+            border: 2px solid var(--tan-warm);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .voice-button:active, .voice-button.recording {
+            background: var(--red-alert);
+            border-color: var(--red-alert);
+            animation: pulse 1s infinite;
+        }
+
+        .speaker-button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 0.25rem 0.5rem;
+            margin-left: 0.5rem;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+
+        .speaker-button:hover {
+            opacity: 1;
+        }
+
+        .speaker-button.playing {
+            animation: pulse 0.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
         /* Footer */
         .mobile-footer {
             background: rgba(0, 0, 0, 0.2);
@@ -1167,10 +1330,16 @@
             <span></span>
         </div>
         <div class="chat-input-container">
+            <button id="micButton" class="voice-button" onclick="toggleVoiceRecording()" title="Voice input">
+                <span id="micIcon">🎤</span>
+            </button>
             <input type="text" id="chatInput" class="chat-input" placeholder="Ask about charter, logistics, safety..." />
             <button id="sendButton" class="send-button" onclick="sendMessage()">▶</button>
         </div>
     </div>
+
+    <!-- Audio player (hidden) -->
+    <audio id="audioPlayer" style="display: none;"></audio>
 
 </body>
 </html>
