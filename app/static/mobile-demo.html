@@ -12,6 +12,111 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <script>
+        // Define functions in head to ensure they're available when onclick handlers execute
+        let API_URL, sessionId, userPath;
+
+        function openChat() {
+            document.getElementById('chatModal').classList.add('open');
+            document.getElementById('chatInput').focus();
+        }
+
+        function closeChat() {
+            document.getElementById('chatModal').classList.remove('open');
+        }
+
+        function openB2BPath() {
+            userPath = 'b2b';
+            openChatWithMessage('I\'m interested in corporate logistics for Permian Basin operations');
+        }
+
+        function openB2CPath() {
+            userPath = 'b2c';
+            openChatWithMessage('I\'m interested in private travel for leisure');
+        }
+
+        function openChatWithMessage(message) {
+            openChat();
+            document.getElementById('chatInput').value = message;
+            sendMessage();
+        }
+
+        function sendQuickReply(message) {
+            document.getElementById('chatInput').value = message;
+            sendMessage();
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+
+            // Show typing indicator
+            document.getElementById('typingIndicator').classList.add('active');
+
+            try {
+                const response = await fetch(`${API_URL}/api/chat/message`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        session_id: sessionId,
+                        user_path: userPath
+                    })
+                });
+
+                const data = await response.json();
+
+                // Hide typing indicator
+                document.getElementById('typingIndicator').classList.remove('active');
+
+                // Add bot response
+                addMessage(data.response, 'bot');
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('typingIndicator').classList.remove('active');
+                addMessage('Sorry, I encountered an error. Please call us at 432-561-9111 for immediate assistance.', 'bot');
+            }
+        }
+
+        function addMessage(text, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+
+            const p = document.createElement('p');
+            p.textContent = text;
+            messageDiv.appendChild(p);
+
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            API_URL = window.location.origin;
+            sessionId = 'mobile-demo-' + Date.now();
+            userPath = null;
+
+            // Allow Enter key to send message
+            document.getElementById('chatInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            // Prevent zoom on input focus (iOS)
+            document.addEventListener('touchstart', function() {}, {passive: true});
+        });
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -983,103 +1088,5 @@
         </div>
     </div>
 
-    <script>
-        const API_URL = window.location.origin;
-        let sessionId = 'mobile-demo-' + Date.now();
-        let userPath = null; // Track B2B or B2C path
-
-        function openChat() {
-            document.getElementById('chatModal').classList.add('open');
-            document.getElementById('chatInput').focus();
-        }
-
-        function closeChat() {
-            document.getElementById('chatModal').classList.remove('open');
-        }
-
-        function openB2BPath() {
-            userPath = 'b2b';
-            openChatWithMessage('I'm interested in corporate logistics for Permian Basin operations');
-        }
-
-        function openB2CPath() {
-            userPath = 'b2c';
-            openChatWithMessage('I'm interested in private travel for leisure');
-        }
-
-        function openChatWithMessage(message) {
-            openChat();
-            document.getElementById('chatInput').value = message;
-            sendMessage();
-        }
-
-        function sendQuickReply(message) {
-            document.getElementById('chatInput').value = message;
-            sendMessage();
-        }
-
-        async function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const message = input.value.trim();
-
-            if (!message) return;
-
-            // Add user message
-            addMessage(message, 'user');
-            input.value = '';
-
-            // Show typing indicator
-            document.getElementById('typingIndicator').classList.add('active');
-
-            try {
-                const response = await fetch(`${API_URL}/api/chat/message`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        message: message,
-                        session_id: sessionId,
-                        user_path: userPath // Pass path context to backend
-                    })
-                });
-
-                const data = await response.json();
-
-                // Hide typing indicator
-                document.getElementById('typingIndicator').classList.remove('active');
-
-                // Add bot response
-                addMessage(data.response, 'bot');
-            } catch (error) {
-                console.error('Error:', error);
-                document.getElementById('typingIndicator').classList.remove('active');
-                addMessage('Sorry, I encountered an error. Please call us at 432-561-9111 for immediate assistance.', 'bot');
-            }
-        }
-
-        function addMessage(text, sender) {
-            const messagesContainer = document.getElementById('chatMessages');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${sender}`;
-
-            const p = document.createElement('p');
-            p.textContent = text;
-            messageDiv.appendChild(p);
-
-            messagesContainer.appendChild(messageDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-
-        // Allow Enter key to send message
-        document.getElementById('chatInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-
-        // Prevent zoom on input focus (iOS)
-        document.addEventListener('touchstart', function() {}, {passive: true});
-    </script>
 </body>
 </html>
