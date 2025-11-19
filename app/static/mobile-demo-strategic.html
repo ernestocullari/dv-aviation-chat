@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>DV Aviation - Permian Basin Charter Specialist</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Brand-Aligned Color Palette (from dvaviation.com) */
+            --navy-deep: #1A3A52;           /* Primary trust & authority */
+            --tan-warm: #B09174;            /* Luxury warmth */
+            --cream-soft: #F0ECE9;          /* Premium background */
+            --gold-premium: #D4AF37;        /* CTA accent */
+            --green-success: #2D5016;       /* Success states */
+            --red-alert: #C41E3A;           /* Emergency/AOG */
+            --gray-text: #4A4A4A;           /* Body copy */
+            --white: #FFFFFF;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--tan-warm) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .mobile-header {
+            background: rgba(26, 58, 82, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 2px solid var(--gold-premium);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .part-135-badge {
+            display: inline-block;
+            background: var(--gold-premium);
+            color: var(--navy-deep);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+
+        /* Trust Bar - CRITICAL for HNWC */
+        .trust-bar {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .trust-item {
+            text-align: center;
+            padding: 0.75rem 0.5rem;
+        }
+
+        .trust-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .trust-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--navy-deep);
+            margin-bottom: 0.125rem;
+        }
+
+        .trust-detail {
+            font-size: 0.625rem;
+            color: var(--gray-text);
+            line-height: 1.3;
+        }
+
+        /* Content */
+        .mobile-content {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            padding-bottom: 80px; /* Space for sticky bar */
+        }
+
+        /* Hero Section with Geographic Positioning */
+        .hero-section {
+            background: var(--white);
+            color: var(--gray-text);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px var(--shadow);
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            color: var(--navy-deep);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .hero-section .subhead {
+            color: var(--tan-warm);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.9375rem;
+        }
+
+        /* Dual-Path Entry Buttons */
+        .dual-path-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .path-button {
+            background: linear-gradient(135deg, var(--navy-deep), var(--tan-warm));
+            color: var(--white);
+            border: none;
+            border-radius: 0.75rem;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .path-button:active {
+            transform: scale(0.98);
+        }
+
+        .path-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .path-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .path-subtitle {
+            font-size: 0.75rem;
+            opacity: 0.9;
+            line-height: 1.3;
+        }
+
+        /* Fleet Cards - Mission-Specific */
+        .fleet-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .fleet-card {
+            background: var(--white);
+            color: var(--gray-text);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 8px var(--shadow);
+        }
+
+        .fleet-card-header {
+            background: linear-gradient(135deg, var(--navy-deep), var(--tan-warm));
+            color: var(--white);
+            padding: 1rem;
+            position: relative;
+        }
+
+        .fleet-badge {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: var(--gold-premium);
+            color: var(--navy-deep);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .fleet-card-header h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .fleet-tagline {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        .fleet-card-body {
+            padding: 1.25rem;
+        }
+
+        .fleet-specs {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .fleet-specs li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 0.875rem;
+        }
+
+        .fleet-specs li:last-child {
+            border-bottom: none;
+        }
+
+        .fleet-specs strong {
+            color: var(--navy-deep);
+        }
+
+        .fleet-use-cases {
+            background: var(--cream-soft);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .fleet-use-cases h4 {
+            font-size: 0.875rem;
+            color: var(--navy-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        .fleet-use-cases ul {
+            list-style: none;
+            font-size: 0.8125rem;
+        }
+
+        .fleet-use-cases li {
+            padding: 0.25rem 0;
+        }
+
+        .fleet-use-cases li:before {
+            content: "✓ ";
+            color: var(--green-success);
+            font-weight: 700;
+        }
+
+        .cta-fleet {
+            background: var(--gold-premium);
+            color: var(--navy-deep);
+            border: none;
+            border-radius: 2rem;
+            padding: 0.875rem 1.5rem;
+            font-size: 0.9375rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s ease;
+        }
+
+        .cta-fleet:active {
+            transform: scale(0.98);
+        }
+
+        /* Operator vs Broker Section */
+        .operator-section {
+            background: var(--white);
+            color: var(--gray-text);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px var(--shadow);
+        }
+
+        .operator-section h2 {
+            color: var(--navy-deep);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .operator-section .intro {
+            text-align: center;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .comparison-card {
+            padding: 1rem;
+            border-radius: 0.75rem;
+            border: 2px solid;
+        }
+
+        .comparison-card.dv {
+            border-color: var(--green-success);
+            background: rgba(45, 80, 22, 0.05);
+        }
+
+        .comparison-card.broker {
+            border-color: var(--red-alert);
+            background: rgba(196, 30, 58, 0.05);
+        }
+
+        .comparison-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .comparison-card.dv h3 {
+            color: var(--green-success);
+        }
+
+        .comparison-card.broker h3 {
+            color: var(--red-alert);
+        }
+
+        .comparison-list {
+            list-style: none;
+            font-size: 0.8125rem;
+        }
+
+        .comparison-list li {
+            padding: 0.5rem 0;
+            line-height: 1.4;
+        }
+
+        .comparison-list li strong {
+            display: block;
+            margin-bottom: 0.125rem;
+        }
+
+        /* Transparent Pricing Section */
+        .pricing-section {
+            background: var(--white);
+            color: var(--gray-text);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px var(--shadow);
+        }
+
+        .pricing-section h2 {
+            color: var(--navy-deep);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .pricing-section .intro {
+            text-align: center;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            color: var(--tan-warm);
+            font-style: italic;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .pricing-column h3 {
+            font-size: 0.9375rem;
+            margin-bottom: 0.75rem;
+            color: var(--navy-deep);
+        }
+
+        .pricing-column ul {
+            list-style: none;
+            font-size: 0.8125rem;
+        }
+
+        .pricing-column ul li {
+            padding: 0.5rem 0;
+            line-height: 1.4;
+        }
+
+        .pricing-column ul li strong {
+            display: block;
+            margin-bottom: 0.125rem;
+        }
+
+        .pricing-column.included li:before {
+            content: "✓ ";
+            color: var(--green-success);
+            font-weight: 700;
+        }
+
+        .pricing-column.excluded li:before {
+            content: "✗ ";
+            color: var(--red-alert);
+            font-weight: 700;
+        }
+
+        /* Sticky Mobile Action Bar */
+        .mobile-sticky-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 58, 82, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            box-shadow: 0 -2px 8px var(--shadow);
+            z-index: 200;
+        }
+
+        .sticky-action {
+            background: var(--gold-premium);
+            color: var(--navy-deep);
+            border: none;
+            border-radius: 2rem;
+            padding: 0.875rem 1rem;
+            font-size: 0.9375rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .sticky-action:active {
+            transform: scale(0.98);
+        }
+
+        .sticky-action.phone {
+            background: var(--green-success);
+            color: var(--white);
+        }
+
+        /* Chat Modal */
+        .chat-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--white);
+            z-index: 1000;
+            flex-direction: column;
+        }
+
+        .chat-modal.open {
+            display: flex;
+        }
+
+        .chat-header {
+            background: var(--navy-deep);
+            color: var(--white);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px var(--shadow);
+        }
+
+        .chat-header h3 {
+            font-size: 1.125rem;
+        }
+
+        .close-chat {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            background: #F5F5F5;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            max-width: 80%;
+        }
+
+        .message.bot {
+            background: var(--white);
+            padding: 0.75rem 1rem;
+            border-radius: 1rem 1rem 1rem 0.25rem;
+            box-shadow: 0 1px 2px var(--shadow);
+        }
+
+        .message.user {
+            background: var(--navy-deep);
+            color: var(--white);
+            padding: 0.75rem 1rem;
+            border-radius: 1rem 1rem 0.25rem 1rem;
+            margin-left: auto;
+        }
+
+        .message.bot p {
+            margin: 0.5rem 0;
+            line-height: 1.5;
+            font-size: 0.9375rem;
+            color: var(--gray-text);
+        }
+
+        .message.user p {
+            margin: 0;
+            line-height: 1.5;
+            font-size: 0.9375rem;
+        }
+
+        /* Quick Reply Buttons in Chat */
+        .quick-replies {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .quick-reply {
+            background: var(--cream-soft);
+            color: var(--navy-deep);
+            border: 1px solid var(--tan-warm);
+            border-radius: 0.5rem;
+            padding: 0.75rem 0.5rem;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .quick-reply:active {
+            background: var(--tan-warm);
+            color: var(--white);
+        }
+
+        .quick-reply-icon {
+            display: block;
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 0.75rem 1rem;
+            background: var(--white);
+            border-radius: 1rem;
+            max-width: 60px;
+            box-shadow: 0 1px 2px var(--shadow);
+        }
+
+        .typing-indicator.active {
+            display: block;
+        }
+
+        .typing-indicator span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--navy-deep);
+            margin: 0 2px;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                opacity: 0.3;
+                transform: translateY(0);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(-10px);
+            }
+        }
+
+        .chat-input-container {
+            padding: 1rem;
+            background: var(--white);
+            border-top: 1px solid #E0E0E0;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid #E0E0E0;
+            border-radius: 1.5rem;
+            font-size: 0.9375rem;
+            outline: none;
+        }
+
+        .chat-input:focus {
+            border-color: var(--navy-deep);
+        }
+
+        .send-button {
+            background: var(--navy-deep);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .send-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Footer */
+        .mobile-footer {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        /* Safe Area Padding for iPhone */
+        @supports (padding: max(0px)) {
+            .mobile-header,
+            .mobile-footer,
+            .chat-header,
+            .chat-input-container,
+            .mobile-sticky-bar {
+                padding-left: max(1rem, env(safe-area-inset-left));
+                padding-right: max(1rem, env(safe-area-inset-right));
+            }
+
+            .mobile-header,
+            .chat-header {
+                padding-top: max(1rem, env(safe-area-inset-top));
+            }
+
+            .mobile-footer,
+            .chat-input-container,
+            .mobile-sticky-bar {
+                padding-bottom: max(1rem, env(safe-area-inset-bottom));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="mobile-header">
+        <div class="logo">✈️ DV AVIATION</div>
+        <div class="tagline">Texas's Permian Basin Charter Specialist</div>
+        <div class="part-135-badge">FAA Part 135 Certified Operator</div>
+    </header>
+
+    <!-- Trust Bar - Above Fold -->
+    <div class="trust-bar">
+        <div class="trust-item">
+            <div class="trust-icon">🛡️</div>
+            <div class="trust-label">Part 135</div>
+            <div class="trust-detail">Direct Fleet Control</div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon">⭐</div>
+            <div class="trust-label">ARGUS Gold</div>
+            <div class="trust-detail">Safety Validated</div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon">💳</div>
+            <div class="trust-label">Transparent</div>
+            <div class="trust-detail">No Hidden Fees</div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="mobile-content">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1>Midland to Houston in 60 Minutes. Guaranteed.</h1>
+            <p class="subhead">From Start to Finish, We'll Handle the Details</p>
+            <p>Experience private aviation with complete Safety, Transparency, and Control. We're not brokers—we're direct operators with our own fleet.</p>
+
+            <!-- Dual-Path Entry -->
+            <div class="dual-path-grid">
+                <button class="path-button" onclick="openB2BPath()">
+                    <div class="path-icon">🏢</div>
+                    <div class="path-title">Corporate Logistics</div>
+                    <div class="path-subtitle">Crew rotation • Executive shuttle • Rig tours</div>
+                </button>
+                <button class="path-button" onclick="openB2CPath()">
+                    <div class="path-icon">✈️</div>
+                    <div class="path-title">Private Travel</div>
+                    <div class="path-subtitle">Weekend escapes • Family trips • Events</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Fleet Section -->
+        <div class="fleet-section">
+            <div class="section-header">
+                <h2>Mission-Matched Fleet</h2>
+                <p>The right aircraft for every mission</p>
+            </div>
+
+            <div class="fleet-grid">
+                <!-- Learjet 45XR Card -->
+                <div class="fleet-card">
+                    <div class="fleet-card-header">
+                        <div class="fleet-badge">Executive Shuttle</div>
+                        <h3>Learjet 45XR</h3>
+                        <p class="fleet-tagline">Midland to Houston in 60 minutes</p>
+                    </div>
+                    <div class="fleet-card-body">
+                        <ul class="fleet-specs">
+                            <li><strong>535 MPH</strong> Fastest light jet in class</li>
+                            <li><strong>8 passengers</strong> Full C-suite capacity</li>
+                            <li><strong>2,049 NM range</strong> Intra-Texas + beyond</li>
+                            <li><strong>Corporate Wi-Fi</strong> Airborne office</li>
+                        </ul>
+
+                        <div class="fleet-use-cases">
+                            <h4>Ideal For:</h4>
+                            <ul>
+                                <li>Executive board meetings (MAF → HOU/DAL)</li>
+                                <li>Same-day client presentations</li>
+                                <li>Confidential negotiations</li>
+                            </ul>
+                        </div>
+
+                        <button class="cta-fleet" onclick="openChatWithMessage('Request Learjet 45XR executive quote for Midland to Houston')">Request Executive Quote</button>
+                    </div>
+                </div>
+
+                <!-- King Air B200 Card -->
+                <div class="fleet-card">
+                    <div class="fleet-card-header">
+                        <div class="fleet-badge">Field Operations</div>
+                        <h3>King Air B200</h3>
+                        <p class="fleet-tagline">Access remote fields commercial jets can't reach</p>
+                    </div>
+                    <div class="fleet-card-body">
+                        <ul class="fleet-specs">
+                            <li><strong>Short-field capable</strong> 2,500 ft runways</li>
+                            <li><strong>10 passengers</strong> Full crew rotation</li>
+                            <li><strong>Cost-efficient</strong> Turboprop economics</li>
+                            <li><strong>Cargo capacity</strong> Critical parts transport</li>
+                        </ul>
+
+                        <div class="fleet-use-cases">
+                            <h4>Ideal For:</h4>
+                            <ul>
+                                <li>Crew rotations to remote rig sites</li>
+                                <li>AOG emergency parts delivery</li>
+                                <li>Rig tours with multiple site stops</li>
+                            </ul>
+                        </div>
+
+                        <button class="cta-fleet" onclick="openChatWithMessage('Request King Air B200 logistics quote for Permian Basin operations')">Request Logistics Quote</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Operator vs Broker Section -->
+        <div class="operator-section">
+            <h2>Why Direct Matters: Operator vs. Broker</h2>
+            <p class="intro">In private aviation, who operates your flight determines your safety, reliability, and recourse.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card dv">
+                    <h3>✓ DV Aviation (Operator)</h3>
+                    <ul class="comparison-list">
+                        <li><strong>Direct fleet ownership</strong>We maintain our aircraft to our standards</li>
+                        <li><strong>Guaranteed availability</strong>Our planes. Your schedule.</li>
+                        <li><strong>Direct accountability</strong>You deal with the team flying your mission</li>
+                        <li><strong>Transparent pricing</strong>No broker markup. Itemized billing.</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-card broker">
+                    <h3>✗ Typical Brokers</h3>
+                    <ul class="comparison-list">
+                        <li><strong>No fleet ownership</strong>They find planes. You hope they're good.</li>
+                        <li><strong>Network-dependent</strong>Your mission waits for their contacts</li>
+                        <li><strong>Multiple parties</strong>Broker → Operator → You = gaps</li>
+                        <li><strong>Hidden markups</strong>Broker fees buried in quotes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transparent Pricing Section -->
+        <div class="pricing-section">
+            <h2>Transparent Pricing. No Hidden Fees.</h2>
+            <p class="intro">"Private aviation has a glossy marketing problem. We prefer honest conversations."</p>
+
+            <div class="pricing-grid">
+                <div class="pricing-column included">
+                    <h3>What You'll Pay</h3>
+                    <ul>
+                        <li><strong>Aircraft hourly rate</strong>Based on aircraft + flight time</li>
+                        <li><strong>Crew & fuel</strong>Itemized, never hidden</li>
+                        <li><strong>Landing fees</strong>Actual costs, transparent</li>
+                        <li><strong>Catering</strong>Your choice, your cost</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-column excluded">
+                    <h3>What You Won't Pay</h3>
+                    <ul>
+                        <li><strong>Broker markups</strong>We're the operator</li>
+                        <li><strong>Membership fees</strong>No jet card buy-in</li>
+                        <li><strong>Upgrade penalties</strong>We adapt, no fees</li>
+                        <li><strong>Weather cancellations</strong>Safety first, we wait</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mobile-footer">
+        <p>&copy; 2025 DV Aviation. All rights reserved.</p>
+        <p>8818 W Hwy 80, Midland, TX 79706</p>
+    </footer>
+
+    <!-- Sticky Mobile Action Bar -->
+    <div class="mobile-sticky-bar">
+        <a href="tel:+14325619111" class="sticky-action phone">
+            <span>📞</span>
+            <span>Call 24/7</span>
+        </a>
+        <button class="sticky-action" onclick="openChat()">
+            <span>💬</span>
+            <span>Get Quote</span>
+        </button>
+    </div>
+
+    <!-- Chat Modal -->
+    <div id="chatModal" class="chat-modal">
+        <div class="chat-header">
+            <h3>💬 DV Aviation Specialist</h3>
+            <button class="close-chat" onclick="closeChat()">×</button>
+        </div>
+        <div id="chatMessages" class="chat-messages">
+            <div class="message bot">
+                <p><strong>Welcome to DV Aviation—Midland's Part 135 charter specialist.</strong></p>
+                <p>I can help you with:</p>
+                <div class="quick-replies">
+                    <button class="quick-reply" onclick="sendQuickReply('Request corporate logistics quote for Permian Basin crew rotation')">
+                        <span class="quick-reply-icon">🏢</span>
+                        Corporate Logistics Quote
+                    </button>
+                    <button class="quick-reply" onclick="sendQuickReply('Tell me about private travel options for weekend getaways')">
+                        <span class="quick-reply-icon">✈️</span>
+                        Private Travel
+                    </button>
+                    <button class="quick-reply" onclick="sendQuickReply('Show me your safety credentials and Part 135 certifications')">
+                        <span class="quick-reply-icon">🛡️</span>
+                        Safety Info
+                    </button>
+                    <button class="quick-reply" onclick="sendQuickReply('I need emergency AOG support right now')">
+                        <span class="quick-reply-icon">🚨</span>
+                        Emergency AOG
+                    </button>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.8;">Or type your question below</p>
+            </div>
+        </div>
+        <div class="typing-indicator" id="typingIndicator">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="chat-input-container">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Ask about charter, logistics, safety..." />
+            <button id="sendButton" class="send-button" onclick="sendMessage()">▶</button>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = window.location.origin;
+        let sessionId = 'mobile-demo-' + Date.now();
+        let userPath = null; // Track B2B or B2C path
+
+        function openChat() {
+            document.getElementById('chatModal').classList.add('open');
+            document.getElementById('chatInput').focus();
+        }
+
+        function closeChat() {
+            document.getElementById('chatModal').classList.remove('open');
+        }
+
+        function openB2BPath() {
+            userPath = 'b2b';
+            openChatWithMessage('I'm interested in corporate logistics for Permian Basin operations');
+        }
+
+        function openB2CPath() {
+            userPath = 'b2c';
+            openChatWithMessage('I'm interested in private travel for leisure');
+        }
+
+        function openChatWithMessage(message) {
+            openChat();
+            document.getElementById('chatInput').value = message;
+            sendMessage();
+        }
+
+        function sendQuickReply(message) {
+            document.getElementById('chatInput').value = message;
+            sendMessage();
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+
+            // Show typing indicator
+            document.getElementById('typingIndicator').classList.add('active');
+
+            try {
+                const response = await fetch(`${API_URL}/api/chat/message`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        session_id: sessionId,
+                        user_path: userPath // Pass path context to backend
+                    })
+                });
+
+                const data = await response.json();
+
+                // Hide typing indicator
+                document.getElementById('typingIndicator').classList.remove('active');
+
+                // Add bot response
+                addMessage(data.response, 'bot');
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('typingIndicator').classList.remove('active');
+                addMessage('Sorry, I encountered an error. Please call us at 432-561-9111 for immediate assistance.', 'bot');
+            }
+        }
+
+        function addMessage(text, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+
+            const p = document.createElement('p');
+            p.textContent = text;
+            messageDiv.appendChild(p);
+
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // Allow Enter key to send message
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Prevent zoom on input focus (iOS)
+        document.addEventListener('touchstart', function() {}, {passive: true});
+    </script>
+</body>
+</html>

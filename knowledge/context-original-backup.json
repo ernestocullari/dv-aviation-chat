@@ -1,0 +1,496 @@
+{
+  "version": "2.0.0-strategic",
+  "last_updated": "2025-01-18",
+  "business": {
+    "name": "DV Aviation",
+    "tagline": "From Start to Finish, We'll Handle the Details",
+    "positioning": "Texas's Permian Basin Charter Specialist",
+    "description": "DV Aviation is a FAA Part 135 certified private jet charter operator based in Midland, Texas. We are direct operators—not brokers—with our own fleet of executive jets and utility turboprops. We specialize in Permian Basin corporate logistics, executive shuttles, and private travel across Texas.",
+    "founded": "Not specified",
+    "type": "aviation_services",
+    "operator_status": {
+      "type": "Part 135 Operator",
+      "significance": "We are NOT brokers. We own and directly operate our aircraft fleet, giving us complete control over safety, maintenance, crew training, and guaranteed availability. This means direct accountability to our clients.",
+      "competitive_advantage": "Unlike brokers who search third-party networks, we guarantee aircraft availability and maintain our fleet to the highest standards."
+    },
+    "service_area": {
+      "primary_city": "Midland",
+      "state": "TX",
+      "specialization": "Permian Basin Operations",
+      "coverage": "Private aviation services nationwide with emphasis on intra-Texas routes",
+      "key_routes": [
+        "Midland (MAF) to Houston (HOU) - 60 minutes",
+        "Midland (MAF) to Dallas (DAL) - 60 minutes",
+        "Midland (MAF) to Austin (AUS) - 75 minutes"
+      ],
+      "local_expertise": "Midland-based operations give us superior local expertise for Permian Basin logistics compared to metro-only operators. We understand energy sector travel needs, remote field access, and time-critical crew rotations."
+    },
+    "certifications": [
+      "FAA Part 135 Certified Operator",
+      "ARGUS Gold Safety Rating (third-party validated)",
+      "14 CFR Parts 91 Operations",
+      "OEM Trained Technicians",
+      "NDI/NDT Inspection Certified"
+    ],
+    "safety_credentials": {
+      "primary": "FAA Part 135 Certification",
+      "third_party": "ARGUS Gold Rating",
+      "description": "Safety isn't marketing—it's our mandate. We maintain Part 135 certification (commercial air charter standards) and undergo third-party ARGUS Gold audits to validate our flight operations, maintenance programs, and safety management systems.",
+      "messaging": "Safety is the foundation of everything we do in private aviation, not a feature."
+    }
+  },
+  "fleet": [
+    {
+      "aircraft": "Learjet 45XR",
+      "category": "Mid-Light Executive Jet",
+      "role": "Executive Shuttle / Corporate Transport",
+      "positioning": "The corporate face of DV Aviation—speed and productivity for C-suite travel",
+      "specifications": {
+        "speed": "535 MPH (fastest light jet in class)",
+        "range": "2,049 nautical miles",
+        "capacity": "8 passengers",
+        "cabin_features": [
+          "Corporate Wi-Fi (airborne office capability)",
+          "Fully enclosed lavatory",
+          "Leather seating",
+          "Refreshment center",
+          "Baggage capacity for extended trips"
+        ]
+      },
+      "ideal_missions": [
+        "Executive board meetings (MAF → HOU/DAL in 60 minutes)",
+        "Same-day client presentations across Texas",
+        "Confidential negotiations requiring privacy",
+        "High-profile executive travel"
+      ],
+      "target_segment": "B2B Corporate - C-suite executives, senior operational managers, attorneys, high-profile individuals",
+      "messaging_theme": "Efficiency & Speed: Maximize Productivity and Time"
+    },
+    {
+      "aircraft": "King Air B200",
+      "category": "Utility Turboprop",
+      "role": "Field Operations / Crew Rotation / Logistics",
+      "positioning": "The Permian utility asset—access and reliability for energy sector operations",
+      "specifications": {
+        "field_performance": "Short-field capable (2,500 ft runways)",
+        "capacity": "10 passengers",
+        "economics": "Cost-efficient turboprop operations",
+        "cargo": "Substantial cargo capacity for critical parts transport"
+      },
+      "ideal_missions": [
+        "Crew rotations to remote rig sites (inaccessible to jets)",
+        "AOG emergency parts delivery",
+        "Rig tours with multiple site stops",
+        "Remote field access where commercial jets cannot land"
+      ],
+      "target_segment": "B2B Logistics - Energy companies, operational managers, field crews",
+      "messaging_theme": "Operational Access: Go Where Commercial Cannot",
+      "unique_value": "4,000+ US airports accessible (vs. ~500 for commercial airlines). Critical for Permian Basin remote field operations."
+    }
+  ],
+  "services": [
+    {
+      "id": "charter-b2b",
+      "name": "Corporate Logistics Charter",
+      "category": "B2B Flight Services",
+      "segment": "Permian Basin Corporate Traveler",
+      "description": "Time-critical corporate charter for Permian Basin operations. Crew rotations, executive shuttles, and rig tours executed with operational reliability and speed. When downtime costs $50,000/hour, charter is an operational necessity, not a luxury.",
+      "features": [
+        "Guaranteed 4-hour AOG response time",
+        "Learjet 45XR for high-speed executive shuttle (MAF → HOU in 60 min)",
+        "King Air B200 for remote field access (2,500 ft runways)",
+        "Mission-specific aircraft matching",
+        "Fixed rates available for recurring Permian Basin routes (\"Permian Shuttle Rate\")",
+        "Transparent, itemized billing"
+      ],
+      "benefits": [
+        "Maximized executive billable hours",
+        "Reduced operational downtime (crew rotations <4 hours notice)",
+        "Access to 4,000+ airports (remote rig sites)",
+        "Predictable costs for recurring routes",
+        "Complete operational control"
+      ],
+      "decision_makers": [
+        "CFOs (cost management, transparent billing)",
+        "Risk Management (Part 135 compliance, safety validation)",
+        "Operations Managers (guaranteed uptime, rapid response)",
+        "General Counsel (clear contracts, no upgrade penalties)"
+      ],
+      "available": true,
+      "popular": true,
+      "messaging": "Operational necessity that mitigates risk and enhances productivity"
+    },
+    {
+      "id": "charter-b2c",
+      "name": "Private Travel Charter",
+      "category": "B2C Flight Services",
+      "segment": "Intra-Texas Leisure & NextGen HNW",
+      "description": "Personalized private aviation for lifestyle and recreational travel. Weekend escapes, family trips, and event travel across Texas with complete flexibility and luxury comfort.",
+      "features": [
+        "Flexible scheduling (fly on your terms, no fixed schedules)",
+        "Pet-friendly cabin options",
+        "Gourmet catering customization",
+        "Family-friendly amenities",
+        "Direct flights to luxury destinations (Horseshoe Bay, Gulf Coast)",
+        "Event travel (F1, SXSW, State Fair, Cowboys games)"
+      ],
+      "benefits": [
+        "Time savings (2-hour drive → 15-minute flight)",
+        "Complete privacy and comfort",
+        "Avoid TSA lines and commercial stress",
+        "Remote work capability (onboard Wi-Fi)",
+        "Destination enjoyment (arrive energized, not exhausted)"
+      ],
+      "target_audience": [
+        "High-net-worth families",
+        "NextGen affluent (18-35, remote workers, experience-driven)",
+        "Special occasions (anniversaries, milestones)",
+        "Event attendees"
+      ],
+      "available": true,
+      "popular": true,
+      "messaging": "Experience over cost. The journey matters as much as the destination."
+    },
+    {
+      "id": "aircraft-management",
+      "name": "Aircraft Management",
+      "category": "Management Services",
+      "description": "Comprehensive aircraft ownership management ensuring seamless operations, regulatory compliance, and optimal performance. We handle all aspects of aircraft ownership so you can focus on flying.",
+      "features": [
+        "Comprehensive aircraft oversight",
+        "Operational optimization",
+        "Expert care and maintenance coordination",
+        "Financial management and reporting",
+        "Regulatory compliance (14 CFR Parts 91)",
+        "Crew management",
+        "24/7 support"
+      ],
+      "benefits": [
+        "Peace of mind with professional management",
+        "Maximized aircraft value",
+        "Reduced operational costs",
+        "Full transparency in operations",
+        "Expert technical support"
+      ],
+      "available": true,
+      "popular": true
+    },
+    {
+      "id": "maintenance",
+      "name": "Aircraft Maintenance",
+      "category": "Technical Services",
+      "description": "Keep your aircraft safe and efficient with our highly experienced, OEM-trained technicians. We provide comprehensive maintenance services to the highest standards with 24/7 AOG support.",
+      "features": [
+        "OEM trained technicians (manufacturer-certified)",
+        "Comprehensive maintenance programs",
+        "Safety-focused inspections",
+        "Preventive maintenance",
+        "24/7 AOG (Aircraft on Ground) emergency services",
+        "Digital maintenance log tracking",
+        "FAA-approved parts sourcing only"
+      ],
+      "benefits": [
+        "Maximum aircraft safety",
+        "Reduced downtime (critical for Permian Basin operations)",
+        "Extended aircraft lifespan",
+        "Regulatory compliance",
+        "Expert technical support"
+      ],
+      "aog_emphasis": "In Permian Basin energy operations, AOG downtime can cost $50,000+/hour. Our 24/7 AOG response (guaranteed <4 hours) minimizes operational losses.",
+      "available": true,
+      "popular": true
+    },
+    {
+      "id": "acquisition-sales",
+      "name": "Aircraft Acquisition & Sales",
+      "category": "Transaction Services",
+      "description": "Streamline aircraft buying and selling with DV Aviation's expertise for a seamless, high-value experience. We guide you through every step of the transaction process.",
+      "features": [
+        "Expert market analysis",
+        "Aircraft valuation",
+        "Negotiation support",
+        "Pre-purchase inspections",
+        "Transaction coordination",
+        "Legal and regulatory guidance"
+      ],
+      "benefits": [
+        "Informed purchasing decisions",
+        "Maximum value in sales",
+        "Reduced transaction time",
+        "Risk mitigation",
+        "Professional representation"
+      ],
+      "available": true,
+      "popular": false
+    },
+    {
+      "id": "component-services",
+      "name": "Aircraft & Component Services",
+      "category": "Technical Services",
+      "description": "Aircraft and Component Services offer extensive expertise in NDI/NDT inspections, landing gear and brake overhauls, and all-encompassing propeller servicing.",
+      "features": [
+        "NDI/NDT inspections (non-destructive testing)",
+        "Landing gear overhauls",
+        "Brake system overhauls",
+        "Propeller servicing",
+        "Component repair and replacement"
+      ],
+      "benefits": [
+        "Extended component life",
+        "Enhanced safety",
+        "Cost-effective repairs",
+        "Comprehensive inspections",
+        "Expert technical service"
+      ],
+      "available": true,
+      "popular": false
+    }
+  ],
+  "core_values": [
+    {
+      "name": "Safety",
+      "description": "Safety is our steadfast commitment and the foundation of everything we do. We employ stringent safety measures, constant oversight, Part 135 compliance, and third-party ARGUS Gold validation to ensure every flight operates with the highest level of security and care.",
+      "importance": "Safety isn't a feature or marketing claim—it's the non-negotiable foundation of all operations.",
+      "credentials": "Part 135 FAA certification + ARGUS Gold third-party audit"
+    },
+    {
+      "name": "Transparency",
+      "description": "Our commitment to transparency ensures you receive clear, detailed, itemized information about every aspect of our services. No hidden fees, no broker markups, no surprise charges. We prefer honest conversations over glossy marketing.",
+      "importance": "You should always know exactly what you're paying for and why. Trust is built through radical transparency.",
+      "competitive_advantage": "Unlike brokers with hidden markups, we provide itemized billing as direct operators."
+    },
+    {
+      "name": "Control",
+      "description": "From personalized travel itineraries to mission-specific aircraft selection to comprehensive aircraft management, we empower you to make informed decisions with complete control over your aviation needs.",
+      "importance": "Your aircraft, your schedule, your mission requirements. We adapt to you—not the other way around.",
+      "flexibility": "No upgrade penalties, no rigid schedules, mission-matched aircraft every time."
+    }
+  ],
+  "competitive_differentiation": {
+    "operator_vs_broker": {
+      "dv_aviation_advantages": [
+        "Direct fleet ownership (we maintain to our standards)",
+        "Guaranteed aircraft availability (our planes, your schedule)",
+        "Direct accountability (you deal with the team flying your mission)",
+        "Transparent pricing (no broker markup, itemized billing)",
+        "Safety control (we train our crews, we audit our maintenance)"
+      ],
+      "broker_limitations": [
+        "No fleet ownership (they find planes, you hope they're good)",
+        "Network-dependent availability (your mission waits for their contacts)",
+        "Multiple parties involved (broker → operator → you = communication gaps)",
+        "Hidden markups (broker fees buried in quotes)",
+        "Limited safety oversight (they claim standards, you trust blindly)"
+      ],
+      "key_message": "When operational uptime is non-negotiable, direct operator control matters."
+    },
+    "charter_vs_fractional": {
+      "charter_advantages": [
+        "Zero capital investment (no $500K+ fractional buy-in)",
+        "Mission-specific aircraft (Learjet for speed, King Air for access—perfect fit every time)",
+        "No upgrade penalties (need larger jet for guests? No problem, no fees)",
+        "Cost certainty available (fixed rates for recurring Permian routes)",
+        "Cancel without penalty (weather delay? We wait, no financial penalty)"
+      ],
+      "fractional_limitations": [
+        "$500K - $5M upfront capital (tied to depreciating asset)",
+        "Locked to specific aircraft type (bought 1/8 share of midsize? That's all you get)",
+        "Upgrade penalties common (need bigger jet? Pay surcharges + limited availability)",
+        "Fixed rates only for owned share (limited flexibility)",
+        "Cancellation penalties (weather no-show? You're charged anyway)"
+      ],
+      "break_even": "For executives flying <50 hours/year, on-demand charter delivers superior economics.",
+      "key_message": "Pay-per-mission flexibility without rigid commitments or upgrade penalties."
+    }
+  },
+  "transparent_pricing": {
+    "philosophy": "Private aviation has a glossy marketing problem. We prefer honest conversations.",
+    "what_you_pay": [
+      "Aircraft hourly rate (based on selected aircraft + flight time)",
+      "Crew & fuel (itemized, never hidden)",
+      "Landing/handling fees (actual costs, passed through transparently)",
+      "Catering (if requested—your choice, your cost)"
+    ],
+    "what_you_dont_pay": [
+      "Broker markups (we're the operator, no middleman)",
+      "Membership fees (no jet card buy-in required)",
+      "Upgrade penalties (mission changes? We adapt, no fees)",
+      "Cancellation fees for weather (safety first, we wait for conditions)"
+    ],
+    "quote_process": "Contact us for itemized quote in 60 seconds. All pricing transparent and detailed."
+  },
+  "contact": {
+    "phone": "432-561-9111",
+    "phone_availability": "24/7 for urgent inquiries, AOG emergencies, and flight bookings",
+    "email": "customerservice@dvaviation.com",
+    "website": "https://dvaviation.com",
+    "office_address": {
+      "street": "8818 W Hwy 80",
+      "city": "Midland",
+      "state": "TX",
+      "zip": "79706",
+      "country": "USA"
+    },
+    "mailing_address": {
+      "po_box": "PO BOX 52561",
+      "city": "Midland",
+      "state": "TX",
+      "zip": "79710",
+      "country": "USA"
+    },
+    "social_media": {
+      "linkedin": "https://linkedin.com/company/dvaviation",
+      "facebook": "https://facebook.com/dvaviation",
+      "instagram": "https://instagram.com/dvaviation"
+    },
+    "response_time": "We respond to all flight inquiries and service requests promptly, typically within 1-2 hours during business hours. For urgent AOG or immediate charter needs, call 432-561-9111 for same-day response."
+  },
+  "faqs": [
+    {
+      "category": "Charter Services - B2B",
+      "question": "What makes DV Aviation different from charter brokers?",
+      "answer": "We're a Part 135 certified operator—not a broker. This means we own and directly operate our fleet (Learjet 45XR and King Air B200), giving us complete control over safety, maintenance, crew training, and guaranteed aircraft availability. Brokers search third-party networks; we guarantee our own aircraft. You deal directly with the team flying your mission, with transparent itemized billing and no broker markups.",
+      "keywords": ["operator", "broker", "difference", "part 135", "direct"]
+    },
+    {
+      "category": "Charter Services - B2B",
+      "question": "How fast can you get me from Midland to Houston?",
+      "answer": "Our Learjet 45XR executive shuttle completes the Midland (MAF) to Houston (HOU) route in approximately 60 minutes. This is one of our most popular Permian Basin corporate routes. We also offer fixed \"Permian Shuttle Rates\" for recurring corporate travel to provide cost certainty similar to jet card programs but without the upfront capital investment.",
+      "keywords": ["midland", "houston", "speed", "time", "permian", "route"]
+    },
+    {
+      "category": "Charter Services - B2B",
+      "question": "Can you access remote rig sites in the Permian Basin?",
+      "answer": "Absolutely. This is our specialization. Our King Air B200 turboprop is short-field capable (2,500 ft runways), allowing access to remote fields that larger corporate jets cannot reach. We can access 4,000+ US airports vs. the ~500 used by commercial airlines. This makes us ideal for crew rotations, rig tours, and AOG parts delivery to remote Permian Basin sites.",
+      "keywords": ["remote", "rig", "permian", "field", "access", "king air"]
+    },
+    {
+      "category": "Charter Services - B2B",
+      "question": "What's your AOG response time for emergency situations?",
+      "answer": "We guarantee <4 hours response time for AOG (Aircraft on Ground) emergencies. Our Midland-based operations and King Air B200 logistics capability allow us to deliver critical parts or crew to remote sites faster than metro-only operators. In Permian Basin energy operations where downtime can cost $50,000+/hour, our rapid AOG response minimizes operational losses.",
+      "keywords": ["aog", "emergency", "response time", "downtime"]
+    },
+    {
+      "category": "Safety & Trust",
+      "question": "What are your safety credentials?",
+      "answer": "Safety is the foundation of everything we do, not a marketing feature. We maintain FAA Part 135 certification (commercial air charter operational standards) and ARGUS Gold third-party safety rating. Our technicians are OEM-trained (manufacturer-certified), and we use digital maintenance logs with FAA-approved parts sourcing only. Every flight undergoes pre-flight inspection by certified A&P mechanics. We undergo regular third-party ARGUS audits to validate our flight operations, maintenance programs, and safety management systems.",
+      "keywords": ["safety", "part 135", "argus", "credentials", "certification"]
+    },
+    {
+      "category": "Pricing & Transparency",
+      "question": "How much does a charter flight cost?",
+      "answer": "Charter costs vary based on aircraft type (Learjet 45XR or King Air B200), distance, duration, and specific mission requirements. We're committed to transparent, itemized billing with no hidden fees or broker markups. What you'll pay: aircraft hourly rate, crew & fuel (itemized), landing fees (actual costs), and catering (if requested). What you WON'T pay: broker markups, membership fees, upgrade penalties, or weather cancellation fees. Contact us at 432-561-9111 for a detailed quote in 60 seconds. For recurring Permian Basin routes, we offer fixed \"Permian Shuttle Rates\" to provide cost certainty.",
+      "keywords": ["cost", "price", "pricing", "how much", "transparent"]
+    },
+    {
+      "category": "Pricing & Transparency",
+      "question": "Do you have hidden fees or broker markups?",
+      "answer": "Absolutely not. As a Part 135 operator (not a broker), we provide transparent, itemized billing with no hidden fees. You pay: aircraft hourly rate, crew & fuel, landing fees (actual costs), and catering (if requested). You do NOT pay: broker markups, membership fees, upgrade penalties, or weather cancellation fees. Private aviation has a \"glossy marketing problem\"—we prefer honest conversations and radical transparency.",
+      "keywords": ["hidden fees", "broker markup", "transparent", "billing"]
+    },
+    {
+      "category": "Charter Services - B2C",
+      "question": "Do you offer private travel for family trips or weekend getaways?",
+      "answer": "Yes! Our Learjet 45XR is perfect for luxury private travel across Texas. Popular routes include Austin to Horseshoe Bay (18 minutes vs. 2-hour drive), Dallas/Houston to Gulf Coast, and event travel (F1, SXSW, State Fair). We offer pet-friendly cabins, gourmet catering, onboard Wi-Fi for remote work, and complete flexibility—fly on your schedule, not a commercial airline's. For NextGen travelers who value experiences over cost, charter eliminates TSA stress and maximizes destination enjoyment time.",
+      "keywords": ["private travel", "family", "weekend", "getaway", "leisure"]
+    },
+    {
+      "category": "Charter vs. Ownership",
+      "question": "Should I buy a fractional share or use charter?",
+      "answer": "For executives flying <50 hours/year, on-demand charter delivers superior economics and flexibility. Charter advantages: zero capital investment (no $500K+ buy-in), mission-specific aircraft (Learjet for speed, King Air for access), no upgrade penalties, and cancel flexibility. Fractional requires substantial upfront capital, locks you to specific aircraft type, charges upgrade penalties, and includes cancellation fees. We also offer fixed rates for recurring routes to provide the cost certainty of jet cards without the commitment. Charter = pay per mission, maximum flexibility.",
+      "keywords": ["fractional", "ownership", "charter", "comparison", "buy"]
+    },
+    {
+      "category": "Location",
+      "question": "Where are you located and what areas do you serve?",
+      "answer": "We're based in Midland, Texas (8818 W Hwy 80, Midland, TX 79706) at Midland International Air & Space Port (MAF). Our Midland-based operations give us superior local expertise for Permian Basin logistics compared to metro-only operators. We specialize in intra-Texas routes (Midland to Houston/Dallas/Austin) but provide private aviation services nationwide. Key routes: MAF → HOU (60 min), MAF → DAL (60 min), MAF → AUS (75 min).",
+      "keywords": ["location", "midland", "permian", "texas", "based"]
+    },
+    {
+      "category": "Contact",
+      "question": "How can I book a charter flight or get a quote?",
+      "answer": "Call us at 432-561-9111 (available 24/7 for urgent inquiries), email customerservice@dvaviation.com, or use our AI assistant for instant quote requests. We provide detailed, itemized quotes in 60 seconds. For urgent AOG or same-day charter needs, call directly for immediate assistance.",
+      "keywords": ["book", "booking", "quote", "contact", "reserve"]
+    }
+  ],
+  "recent_articles": [
+    {
+      "title": "Grounded? How Our AOG Services Get You Back in the Air—Fast",
+      "summary": "In Permian Basin operations, time is more than money—it's momentum and critical business operations. Our <4 hour AOG response minimizes downtime.",
+      "date": "2025-06-09",
+      "url": "/articles/aog-services"
+    },
+    {
+      "title": "Operator vs. Broker: Why Direct Control Matters in Private Aviation",
+      "summary": "Understanding the critical difference between Part 135 operators and charter brokers—and why it affects your safety, reliability, and accountability.",
+      "date": "2025-06-09",
+      "url": "/articles/operator-vs-broker"
+    },
+    {
+      "title": "Charter vs. Fractional: The 50-Hour Break-Even Analysis",
+      "summary": "For executives flying <50 hours/year, on-demand charter delivers superior economics and flexibility vs. fractional ownership commitments.",
+      "date": "2025-06-09",
+      "url": "/articles/charter-vs-fractional"
+    },
+    {
+      "title": "Why Customization Matters in Charter Flights",
+      "summary": "Commercial travel demands conformity. Private charter gives you complete control—mission-matched aircraft, personalized schedules, your way.",
+      "date": "2025-06-09",
+      "url": "/articles/customization-charter"
+    }
+  ],
+  "ai_instructions": {
+    "tone": "professional, authoritative, trustworthy, transparent",
+    "personality": "You are a knowledgeable aviation professional representing a Part 135 certified operator (not a broker). You prioritize safety first, transparency always, and client control. You speak with authority about Permian Basin operations and understand corporate logistics needs. You are helpful yet honest—preferring truthful answers over sales pitches.",
+    "positioning": [
+      "Always emphasize DV Aviation is a Part 135 OPERATOR, not a broker",
+      "Highlight Permian Basin specialization and Midland-based local expertise",
+      "Differentiate between B2B corporate logistics and B2C private travel needs",
+      "Position charter as operational necessity for B2B, lifestyle investment for B2C"
+    ],
+    "guidelines": [
+      "SAFETY FIRST: Always emphasize safety as the foundation, not a feature",
+      "TRANSPARENCY: Provide honest, detailed answers. Admit when you don't know.",
+      "OPERATOR STATUS: Clarify we're direct operators with our own fleet, not brokers",
+      "FLEET MATCHING: Recommend Learjet 45XR for speed/executive travel, King Air B200 for remote access/logistics",
+      "GEOGRAPHIC EXPERTISE: Emphasize Permian Basin specialization and intra-Texas routes",
+      "COST TRANSPARENCY: If asked about pricing, encourage contact for itemized quote. Mention no hidden fees/broker markups.",
+      "URGENCY: For AOG or immediate charter needs, prioritize phone contact (432-561-9111)",
+      "COMPETITIVE POSITIONING: When appropriate, contrast operator vs. broker and charter vs. fractional",
+      "DECISION MAKERS: Address B2B concerns for CFOs (cost), Risk Managers (safety), Ops Managers (reliability)",
+      "NEVER FABRICATE: Don't make up aircraft availability, specific prices, or flight times. Direct to contact."
+    ],
+    "b2b_emphasis": [
+      "Operational reliability and guaranteed uptime",
+      "Crew rotation capability (<4 hour notice)",
+      "Remote field access (4,000+ airports vs. 500 commercial)",
+      "AOG emergency response (<4 hours)",
+      "Fixed rates for recurring routes (\"Permian Shuttle Rate\")",
+      "Transparent, itemized billing for CFO approval",
+      "Part 135 compliance for Risk Management"
+    ],
+    "b2c_emphasis": [
+      "Time savings (opportunity cost framing)",
+      "Experience and lifestyle integration",
+      "Complete flexibility and control",
+      "Pet-friendly, family-friendly amenities",
+      "Remote work capability (onboard Wi-Fi)",
+      "Avoid TSA stress and commercial delays",
+      "Destination enjoyment maximization"
+    ],
+    "fallback_responses": {
+      "unknown_question": "That's an excellent question about aviation services. For the most accurate and detailed answer tailored to your specific situation, I'd recommend calling our team at 432-561-9111 or emailing customerservice@dvaviation.com. As a Part 135 operator, we provide direct, transparent guidance.",
+      "pricing_inquiry": "Charter pricing varies based on aircraft type (Learjet 45XR or King Air B200), distance, duration, and specific mission requirements. We provide transparent, itemized quotes with no hidden fees or broker markups. For a detailed quote in 60 seconds, please contact us at 432-561-9111 or customerservice@dvaviation.com. For recurring Permian Basin routes, we offer fixed \"Permian Shuttle Rates\" for cost certainty.",
+      "urgent_request": "For immediate charter inquiries, AOG (Aircraft on Ground) emergencies, or same-day mission needs, please call us directly at 432-561-9111. Our team is available 24/7 for urgent aviation operations. As a Midland-based operator, we guarantee <4 hour AOG response for Permian Basin emergencies.",
+      "technical_question": "That's a technical question our OEM-trained, certified technicians can best answer with specific details about your aircraft or mission requirements. Please contact us at 432-561-9111 or customerservice@dvaviation.com, and we'll connect you with our maintenance team.",
+      "complaint": "I sincerely apologize for any issue you've experienced. Your satisfaction and safety are our top priorities as a Part 135 operator. Please call us immediately at 432-561-9111 so our team can address this personally, investigate thoroughly, and make it right. We value your trust and transparency."
+    }
+  },
+  "regulatory_info": {
+    "operating_authority": "FAA Part 135 Certified Operator",
+    "significance": "Part 135 certification means we adhere to rigorous FAA commercial air charter standards for safety, crew training, maintenance, and operational procedures. This is significantly more stringent than Part 91 (general aviation) and distinguishes us from unregulated brokers.",
+    "company_type": "Private Aviation Operator & Management Company",
+    "services_type": "Private Air Charter (Part 135), Aircraft Management, Maintenance Services",
+    "compliance": "All operations conducted under FAA Part 135 regulations, ARGUS Gold third-party safety audits, and industry best practices"
+  }
+}

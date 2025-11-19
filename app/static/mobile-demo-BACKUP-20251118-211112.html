@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>DV Aviation - Mobile Chat Demo</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --aviation-blue: #1E3A8A;
+            --dark-gray: #2C3E50;
+            --light-gray: #F8F9FA;
+            --accent-orange: #F27E26;
+            --white: #FFFFFF;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, var(--aviation-blue) 0%, var(--dark-gray) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .mobile-header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Content */
+        .mobile-content {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .welcome-card {
+            background: var(--white);
+            color: var(--dark-gray);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px var(--shadow);
+        }
+
+        .welcome-card h2 {
+            color: var(--aviation-blue);
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .welcome-card p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.9375rem;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quick-action {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            text-align: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .quick-action:active {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(0.98);
+        }
+
+        .quick-action-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .quick-action-text {
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--dark-gray);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            box-shadow: 0 2px 4px var(--shadow);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--aviation-blue);
+        }
+
+        .service-card p {
+            font-size: 0.875rem;
+            line-height: 1.5;
+            opacity: 0.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--white);
+            color: var(--dark-gray);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px var(--shadow);
+        }
+
+        .cta-section h3 {
+            color: var(--aviation-blue);
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+
+        .chat-button {
+            background: var(--accent-orange);
+            color: var(--white);
+            border: none;
+            border-radius: 2rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(242, 126, 38, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .chat-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 6px rgba(242, 126, 38, 0.3);
+        }
+
+        .contact-info {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        .contact-info a {
+            color: var(--aviation-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .mobile-footer {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        /* Chat Modal */
+        .chat-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--white);
+            z-index: 1000;
+            flex-direction: column;
+        }
+
+        .chat-modal.open {
+            display: flex;
+        }
+
+        .chat-header {
+            background: var(--aviation-blue);
+            color: var(--white);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px var(--shadow);
+        }
+
+        .chat-header h3 {
+            font-size: 1.125rem;
+        }
+
+        .close-chat {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            background: #F5F5F5;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            max-width: 80%;
+        }
+
+        .message.bot {
+            background: var(--white);
+            padding: 0.75rem 1rem;
+            border-radius: 1rem 1rem 1rem 0.25rem;
+            box-shadow: 0 1px 2px var(--shadow);
+        }
+
+        .message.user {
+            background: var(--aviation-blue);
+            color: var(--white);
+            padding: 0.75rem 1rem;
+            border-radius: 1rem 1rem 0.25rem 1rem;
+            margin-left: auto;
+        }
+
+        .message.bot p {
+            margin: 0.5rem 0;
+            line-height: 1.5;
+            font-size: 0.9375rem;
+        }
+
+        .message.user p {
+            margin: 0;
+            line-height: 1.5;
+            font-size: 0.9375rem;
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 0.75rem 1rem;
+            background: var(--white);
+            border-radius: 1rem;
+            max-width: 60px;
+            box-shadow: 0 1px 2px var(--shadow);
+        }
+
+        .typing-indicator.active {
+            display: block;
+        }
+
+        .typing-indicator span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--aviation-blue);
+            margin: 0 2px;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                opacity: 0.3;
+                transform: translateY(0);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(-10px);
+            }
+        }
+
+        .chat-input-container {
+            padding: 1rem;
+            background: var(--white);
+            border-top: 1px solid #E0E0E0;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid #E0E0E0;
+            border-radius: 1.5rem;
+            font-size: 0.9375rem;
+            outline: none;
+        }
+
+        .chat-input:focus {
+            border-color: var(--aviation-blue);
+        }
+
+        .send-button {
+            background: var(--aviation-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .send-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Safe Area Padding for iPhone */
+        @supports (padding: max(0px)) {
+            .mobile-header,
+            .mobile-footer,
+            .chat-header,
+            .chat-input-container {
+                padding-left: max(1rem, env(safe-area-inset-left));
+                padding-right: max(1rem, env(safe-area-inset-right));
+            }
+
+            .mobile-header,
+            .chat-header {
+                padding-top: max(1rem, env(safe-area-inset-top));
+            }
+
+            .mobile-footer,
+            .chat-input-container {
+                padding-bottom: max(1rem, env(safe-area-inset-bottom));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="mobile-header">
+        <div class="logo">✈️ DV AVIATION</div>
+        <div class="tagline">From Start to Finish, We'll Handle the Details</div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="mobile-content">
+        <!-- Welcome Card -->
+        <div class="welcome-card">
+            <h2>Welcome to DV Aviation</h2>
+            <p>Experience private aviation with complete Safety, Transparency, and Control. Our AI assistant is here to answer your questions 24/7.</p>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <div class="quick-action" onclick="openChatWithMessage('What charter services do you offer?')">
+                <div class="quick-action-icon">🛩️</div>
+                <div class="quick-action-text">Charter</div>
+            </div>
+            <div class="quick-action" onclick="openChatWithMessage('How do you ensure safety?')">
+                <div class="quick-action-icon">🛡️</div>
+                <div class="quick-action-text">Safety</div>
+            </div>
+            <div class="quick-action" onclick="openChatWithMessage('Do you offer maintenance services?')">
+                <div class="quick-action-icon">🔧</div>
+                <div class="quick-action-text">Maintenance</div>
+            </div>
+            <div class="quick-action" onclick="openChatWithMessage('Where are you located?')">
+                <div class="quick-action-icon">📍</div>
+                <div class="quick-action-text">Location</div>
+            </div>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">✈️</div>
+                <h3>Private Jet Charter</h3>
+                <p>Experience flexibility, convenience, and luxury with our customized charter services.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Aircraft Management</h3>
+                <p>Comprehensive oversight, operational excellence, and regulatory compliance.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Maintenance Services</h3>
+                <p>OEM-trained technicians, 24/7 AOG support, and complete maintenance solutions.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🤝</div>
+                <h3>Acquisition & Sales</h3>
+                <p>Expert guidance for buying or selling aircraft with market analysis and negotiation.</p>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h3>Have Questions? Ask Our AI Assistant!</h3>
+            <button class="chat-button" onclick="openChat()">
+                💬 Chat Now
+            </button>
+            <div class="contact-info">
+                Or call us at <a href="tel:+14325619111">432-561-9111</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mobile-footer">
+        <p>&copy; 2025 DV Aviation. All rights reserved.</p>
+        <p>8818 W Hwy 80, Midland, TX 79706</p>
+    </footer>
+
+    <!-- Chat Modal -->
+    <div id="chatModal" class="chat-modal">
+        <div class="chat-header">
+            <h3>💬 DV Aviation Assistant</h3>
+            <button class="close-chat" onclick="closeChat()">×</button>
+        </div>
+        <div id="chatMessages" class="chat-messages">
+            <div class="message bot">
+                <p>Hello! I'm the DV Aviation AI assistant. How can I help you with charter flights, aircraft management, or maintenance services today?</p>
+            </div>
+        </div>
+        <div class="typing-indicator" id="typingIndicator">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="chat-input-container">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Ask about charter, management, maintenance..." />
+            <button id="sendButton" class="send-button" onclick="sendMessage()">▶</button>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = window.location.origin;
+        let sessionId = 'mobile-demo-' + Date.now();
+
+        function openChat() {
+            document.getElementById('chatModal').classList.add('open');
+            document.getElementById('chatInput').focus();
+        }
+
+        function closeChat() {
+            document.getElementById('chatModal').classList.remove('open');
+        }
+
+        function openChatWithMessage(message) {
+            openChat();
+            document.getElementById('chatInput').value = message;
+            sendMessage();
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+
+            // Show typing indicator
+            document.getElementById('typingIndicator').classList.add('active');
+
+            try {
+                const response = await fetch(`${API_URL}/api/chat/message`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        session_id: sessionId
+                    })
+                });
+
+                const data = await response.json();
+
+                // Hide typing indicator
+                document.getElementById('typingIndicator').classList.remove('active');
+
+                // Add bot response
+                addMessage(data.response, 'bot');
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('typingIndicator').classList.remove('active');
+                addMessage('Sorry, I encountered an error. Please try again or call us at 432-561-9111.', 'bot');
+            }
+        }
+
+        function addMessage(text, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+
+            const p = document.createElement('p');
+            p.textContent = text;
+            messageDiv.appendChild(p);
+
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // Allow Enter key to send message
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Prevent zoom on input focus (iOS)
+        document.addEventListener('touchstart', function() {}, {passive: true});
+    </script>
+</body>
+</html>

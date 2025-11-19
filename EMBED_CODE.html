@@ -1,0 +1,86 @@
+<!--
+  DV Aviation AI Chat Agent - Embed Code
+
+  INSTRUCTIONS:
+  1. Copy everything between the START and END markers below
+  2. Paste into dvaviation.com BEFORE the closing </body> tag
+  3. Save and publish
+  4. Test on desktop and mobile
+
+  That's it! Your AI chat agent will appear in the bottom-right corner.
+-->
+
+<!-- ========== START: DV AVIATION AI CHAT AGENT ========== -->
+
+<script src="https://dv-aviation-chat-388610795169.us-east4.run.app/shared/universal-chat-widget.js"></script>
+<script>
+  new UniversalChatWidget({
+    // Backend API URL
+    apiUrl: 'https://dv-aviation-chat-388610795169.us-east4.run.app',
+
+    // Branding (customize these colors to match your brand)
+    primaryColor: '#1E3A8A',      // Aviation blue
+    secondaryColor: '#2C3E50',    // Dark gray
+    companyName: 'DV Aviation',
+
+    // Features (voice disabled for 30-day pilot)
+    enableVoice: false,
+
+    // Messages
+    welcomeMessage: 'Hello! I\'m the DV Aviation AI assistant. How can I help you with charter flights, aircraft management, or maintenance services today?',
+    placeholder: 'Ask about charter, management, maintenance...',
+    buttonText: 'Chat with Us',
+
+    // Layout
+    position: 'bottom-right',     // or 'bottom-left'
+    maxWidth: '400px',
+    maxHeight: '600px',
+    mobileBreakpoint: 768,
+
+    // Behavior
+    autoOpen: false,              // Don't open automatically
+    persistSession: true,         // Remember conversations
+    showTimestamps: true,         // Show message times
+
+    // Accessibility
+    ariaLabel: 'DV Aviation AI Chat Assistant',
+    closeButtonAriaLabel: 'Close chat window',
+
+    // Advanced (optional)
+    theme: 'light',               // or 'dark' or 'auto'
+    animationDuration: 300,       // Milliseconds
+    soundEnabled: false           // No notification sounds
+  });
+</script>
+
+<!-- ========== END: DV AVIATION AI CHAT AGENT ========== -->
+
+
+<!--
+  CUSTOMIZATION OPTIONS
+
+  If you want to customize colors to match your exact brand:
+  1. Replace '#1E3A8A' with your primary brand color (hex code)
+  2. Replace '#2C3E50' with your accent color (hex code)
+
+  To find your brand colors:
+  - Use browser DevTools on dvaviation.com
+  - Or use a color picker tool
+  - Or ask your web designer
+
+  MOBILE TESTING
+
+  After adding the code:
+  1. Test on desktop (Chrome, Safari, Firefox, Edge)
+  2. Test on mobile (iPhone, iPad, Android)
+  3. Verify chat button appears and works
+  4. Try sample questions from DEPLOYMENT_COMPLETE.md
+
+  NEED HELP?
+
+  If the chat button doesn't appear:
+  1. Check browser console for errors (F12 → Console tab)
+  2. Verify the script URL loads: https://dv-aviation-chat-388610795169.us-east4.run.app/shared/universal-chat-widget.js
+  3. Make sure code is before </body> tag (not in <head>)
+  4. Contact us - we'll help troubleshoot!
+-->

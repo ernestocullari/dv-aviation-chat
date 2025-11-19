@@ -1,0 +1,291 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2025-01-18",
+  "business": {
+    "name": "DV Aviation",
+    "tagline": "From Start to Finish, We'll Handle the Details",
+    "description": "DV Aviation is a private aviation management company providing comprehensive charter, aircraft management, and maintenance services in Midland, Texas. Operating under 14 CFR Parts 91, we ensure safety, transparency, and control in every aspect of private aviation.",
+    "founded": "Not specified",
+    "type": "aviation_services",
+    "service_area": {
+      "primary_city": "Midland",
+      "state": "TX",
+      "coverage": "Private aviation services nationwide"
+    },
+    "certifications": [
+      "14 CFR Parts 91 Operations",
+      "OEM Trained Technicians",
+      "NDI/NDT Inspection Certified"
+    ]
+  },
+  "services": [
+    {
+      "id": "charter",
+      "name": "Private Jet Charter",
+      "category": "Flight Services",
+      "description": "Experience the flexibility, convenience and luxury of our jet charter services. Fly on your terms with personalized travel itineraries and dedicated team support.",
+      "features": [
+        "Flexible scheduling - fly on your terms",
+        "Luxury and convenience",
+        "Personalized travel itineraries",
+        "Dedicated team ensuring every detail",
+        "No fixed schedules or crowded airports"
+      ],
+      "benefits": [
+        "Complete control over your travel schedule",
+        "Privacy and comfort",
+        "Time savings",
+        "Direct flights to destinations",
+        "Customized in-flight experience"
+      ],
+      "available": true,
+      "popular": true
+    },
+    {
+      "id": "aircraft-management",
+      "name": "Aircraft Management",
+      "category": "Management Services",
+      "description": "Ensure seamless operations and optimal performance through expert care and continuous oversight. We handle all aspects of aircraft ownership so you can focus on flying.",
+      "features": [
+        "Comprehensive aircraft oversight",
+        "Operational optimization",
+        "Expert care and maintenance coordination",
+        "Financial management and reporting",
+        "Regulatory compliance"
+      ],
+      "benefits": [
+        "Peace of mind with professional management",
+        "Maximized aircraft value",
+        "Reduced operational costs",
+        "Full transparency in operations",
+        "24/7 support"
+      ],
+      "available": true,
+      "popular": true
+    },
+    {
+      "id": "maintenance",
+      "name": "Aircraft Maintenance",
+      "category": "Technical Services",
+      "description": "Keep your aircraft safe and efficient with our highly experienced and OEM trained technicians. We provide comprehensive maintenance services to the highest standards.",
+      "features": [
+        "OEM trained technicians",
+        "Comprehensive maintenance programs",
+        "Safety-focused inspections",
+        "Preventive maintenance",
+        "AOG (Aircraft on Ground) services"
+      ],
+      "benefits": [
+        "Maximum aircraft safety",
+        "Reduced downtime",
+        "Extended aircraft lifespan",
+        "Regulatory compliance",
+        "Expert technical support"
+      ],
+      "available": true,
+      "popular": true
+    },
+    {
+      "id": "acquisition-sales",
+      "name": "Aircraft Acquisition & Sales",
+      "category": "Transaction Services",
+      "description": "Streamline aircraft buying and selling with DV Aviation's expertise for a seamless, high-value experience. We guide you through every step of the process.",
+      "features": [
+        "Expert market analysis",
+        "Aircraft valuation",
+        "Negotiation support",
+        "Pre-purchase inspections",
+        "Transaction coordination"
+      ],
+      "benefits": [
+        "Informed purchasing decisions",
+        "Maximum value in sales",
+        "Reduced transaction time",
+        "Risk mitigation",
+        "Professional representation"
+      ],
+      "available": true,
+      "popular": false
+    },
+    {
+      "id": "component-services",
+      "name": "Aircraft & Component Services",
+      "category": "Technical Services",
+      "description": "Aircraft and Component Services offer extensive expertise in NDI/NDT inspections, landing gear and brake overhauls, and all-encompassing propeller servicing.",
+      "features": [
+        "NDI/NDT inspections",
+        "Landing gear overhauls",
+        "Brake system overhauls",
+        "Propeller servicing",
+        "Component repair and replacement"
+      ],
+      "benefits": [
+        "Extended component life",
+        "Enhanced safety",
+        "Cost-effective repairs",
+        "Comprehensive inspections",
+        "Expert technical service"
+      ],
+      "available": true,
+      "popular": false
+    }
+  ],
+  "core_values": [
+    {
+      "name": "Safety",
+      "description": "Safety is our steadfast commitment. We employ stringent safety measures and constant oversight to ensure that every flight operates with the highest level of security and care.",
+      "importance": "Safety isn't a feature—it's the foundation of everything we do in private aviation."
+    },
+    {
+      "name": "Transparency",
+      "description": "Our commitment to transparency ensures you receive clear, detailed information about every aspect of our services, fostering trust and confidence in our partnership.",
+      "importance": "You should always know exactly what you're paying for and why. No hidden fees, no surprises."
+    },
+    {
+      "name": "Control",
+      "description": "From personalized travel itineraries to comprehensive management of your aircraft, we empower you to make informed decisions with ease and assurance.",
+      "importance": "Your aircraft, your schedule, your way. We give you complete control over your aviation needs."
+    }
+  ],
+  "contact": {
+    "phone": "432-561-9111",
+    "email": "customerservice@dvaviation.com",
+    "website": "https://dvaviation.com",
+    "office_address": {
+      "street": "8818 W Hwy 80",
+      "city": "Midland",
+      "state": "TX",
+      "zip": "79706",
+      "country": "USA"
+    },
+    "mailing_address": {
+      "po_box": "PO BOX 52561",
+      "city": "Midland",
+      "state": "TX",
+      "zip": "79710",
+      "country": "USA"
+    },
+    "social_media": {
+      "linkedin": "https://linkedin.com/company/dvaviation",
+      "facebook": "https://facebook.com/dvaviation",
+      "instagram": "https://instagram.com/dvaviation"
+    },
+    "response_time": "We respond to all flight inquiries and service requests promptly, typically within 1-2 hours during business hours."
+  },
+  "faqs": [
+    {
+      "category": "Charter Services",
+      "question": "What charter services do you offer?",
+      "answer": "We offer private jet charter services providing flexibility, convenience, and luxury. You can fly on your terms with personalized travel itineraries, no fixed schedules, and direct flights to your destination. Our dedicated team handles every detail from start to finish.",
+      "keywords": ["charter", "flights", "jet", "services", "what do you offer"]
+    },
+    {
+      "category": "Charter Services",
+      "question": "How do I book a charter flight?",
+      "answer": "You can book a charter flight by calling us at 432-561-9111, emailing customerservice@dvaviation.com, or submitting a flight inquiry through our website. We'll work with you to create a personalized itinerary that meets your exact needs.",
+      "keywords": ["book", "booking", "reserve", "schedule", "flight inquiry"]
+    },
+    {
+      "category": "Safety",
+      "question": "How do you ensure flight safety?",
+      "answer": "Safety is our top priority and the foundation of everything we do. We employ stringent safety measures, constant oversight, highly experienced pilots, OEM trained technicians, and comprehensive maintenance programs. We operate under 14 CFR Parts 91 regulations and maintain the highest industry standards.",
+      "keywords": ["safety", "safe", "security", "regulations", "certified"]
+    },
+    {
+      "category": "Pricing",
+      "question": "How much does a charter flight cost?",
+      "answer": "Charter flight costs vary based on aircraft type, distance, duration, and specific requirements. We're committed to transparent pricing with no hidden fees. Please contact us at 432-561-9111 or customerservice@dvaviation.com for a detailed quote tailored to your specific travel needs.",
+      "keywords": ["cost", "price", "pricing", "how much", "rates", "fees"]
+    },
+    {
+      "category": "Aircraft Management",
+      "question": "What does aircraft management include?",
+      "answer": "Our aircraft management services include comprehensive oversight of operations, maintenance coordination, financial management and reporting, regulatory compliance, crew management, and 24/7 support. We handle all aspects of aircraft ownership so you can focus on flying.",
+      "keywords": ["management", "aircraft management", "what's included", "services"]
+    },
+    {
+      "category": "Maintenance",
+      "question": "What maintenance services do you provide?",
+      "answer": "We provide comprehensive aircraft maintenance including preventive maintenance, safety inspections, AOG (Aircraft on Ground) services, component overhauls, NDI/NDT inspections, and all scheduled maintenance. Our technicians are highly experienced and OEM trained to the highest standards.",
+      "keywords": ["maintenance", "repair", "service", "inspection", "AOG"]
+    },
+    {
+      "category": "Location",
+      "question": "Where are you located?",
+      "answer": "We're located in Midland, Texas at 8818 W Hwy 80, Midland, TX 79706. Our mailing address is PO BOX 52561, Midland, TX 79710. You can reach us at 432-561-9111 or customerservice@dvaviation.com.",
+      "keywords": ["location", "where", "address", "find you", "based"]
+    },
+    {
+      "category": "Contact",
+      "question": "How can I contact you?",
+      "answer": "You can reach us by phone at 432-561-9111, email at customerservice@dvaviation.com, or visit our office at 8818 W Hwy 80, Midland, TX 79706. We respond to all inquiries promptly, typically within 1-2 hours during business hours.",
+      "keywords": ["contact", "reach", "call", "email", "phone"]
+    },
+    {
+      "category": "Aircraft Sales",
+      "question": "Can you help me buy or sell an aircraft?",
+      "answer": "Yes! We provide comprehensive aircraft acquisition and sales services including market analysis, aircraft valuation, negotiation support, pre-purchase inspections, and complete transaction coordination. Our expertise ensures a seamless, high-value experience.",
+      "keywords": ["buy", "sell", "purchase", "acquisition", "sales"]
+    },
+    {
+      "category": "Service Area",
+      "question": "What areas do you serve?",
+      "answer": "While we're based in Midland, Texas, we provide private aviation services nationwide. Our charter services can take you anywhere you need to go, and our aircraft management and maintenance services are available for aircraft owners across the country.",
+      "keywords": ["area", "coverage", "where", "service area", "locations"]
+    }
+  ],
+  "recent_articles": [
+    {
+      "title": "Grounded? How Our AOG Services Get You Back in the Air—Fast",
+      "summary": "In aviation, time is more than money—it's momentum, opportunity, and critical business operations. Our AOG services minimize downtime.",
+      "date": "2025-06-09",
+      "url": "/articles/aog-services"
+    },
+    {
+      "title": "Is Now the Right Time to Buy a Private Aircraft?",
+      "summary": "Private aircraft ownership is often seen as the pinnacle of business success. Learn if it's the right time for you.",
+      "date": "2025-06-09",
+      "url": "/articles/buying-aircraft"
+    },
+    {
+      "title": "Why Customization Matters in Charter Flights",
+      "summary": "Commercial travel demands conformity—fixed schedules, crowded terminals. Private charter gives you complete control.",
+      "date": "2025-06-09",
+      "url": "/articles/customization-charter"
+    },
+    {
+      "title": "Transparent Pricing in Private Aviation: What You Should Always Ask",
+      "summary": "When it comes to private aviation, transparent pricing matters. Learn what questions to ask before booking.",
+      "date": "2025-06-09",
+      "url": "/articles/transparent-pricing"
+    }
+  ],
+  "ai_instructions": {
+    "tone": "professional, knowledgeable, trustworthy",
+    "personality": "You are a knowledgeable aviation professional who prioritizes safety, transparency, and customer control. You speak with authority about aviation matters while remaining approachable and helpful.",
+    "guidelines": [
+      "Always emphasize safety as the foundation of all services",
+      "Be transparent about pricing and services - no hidden information",
+      "Empower customers with information to make informed decisions",
+      "Use aviation industry terminology when appropriate, but explain complex terms",
+      "If asked about specific flight costs, encourage them to contact for personalized quote",
+      "Highlight the three core values: Safety, Transparency, Control",
+      "For urgent matters (AOG, immediate charter needs), prioritize phone contact",
+      "Never make up aircraft types, pricing, or availability - direct to contact",
+      "Emphasize the 'From Start to Finish' approach - comprehensive service"
+    ],
+    "fallback_responses": {
+      "unknown_question": "That's an excellent question about aviation services. For the most accurate and detailed answer, I'd recommend calling our team at 432-561-9111 or emailing customerservice@dvaviation.com. They can provide specific information tailored to your situation.",
+      "pricing_inquiry": "Charter and aircraft service pricing varies based on your specific needs including aircraft type, distance, duration, and requirements. For a detailed, transparent quote with no hidden fees, please contact us at 432-561-9111 or customerservice@dvaviation.com.",
+      "urgent_request": "For immediate flight inquiries or AOG (Aircraft on Ground) situations, please call us directly at 432-561-9111. Our team is standing by to assist with urgent aviation needs.",
+      "technical_question": "That's a technical question that our experienced, OEM-trained technicians can best answer. Please contact us at 432-561-9111 or customerservice@dvaviation.com, and we'll connect you with our maintenance team.",
+      "complaint": "I sincerely apologize for any issue you've experienced. Your satisfaction and safety are our top priorities. Please call us immediately at 432-561-9111 so our team can address this personally and make it right."
+    }
+  },
+  "regulatory_info": {
+    "operating_authority": "14 CFR Parts 91",
+    "company_type": "Private Aviation Management Company",
+    "services_type": "Private Transportation Services",
+    "compliance": "All operations conducted under FAA regulations and industry best practices"
+  }
+}
