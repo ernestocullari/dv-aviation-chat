@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Removed deprecated apple-mobile-web-app-capable meta tag (Nov 2025 UX audit) -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>DV Aviation - Permian Basin Charter Specialist</title>
+    <meta name="theme-color" content="#3A2F26">
+    <title data-i18n="page.title">DV Aviation - Permian Basin Charter Specialist</title>
 
     <!-- Google Fonts - Open Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +14,274 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <script>
+        // ========================================================================
+        // INTERNATIONALIZATION (i18n) - BILINGUAL SUPPORT (English/Spanish)
+        // ========================================================================
+
+        // Current language (default: English, auto-detected from browser)
+        let currentLanguage = 'en';
+
+        // Translation dictionary
+        const translations = {
+            en: {
+                'page.title': 'DV Aviation - Permian Basin Charter Specialist',
+                'skip.link': 'Skip to main content',
+                'header.tagline': 'Texas\'s Permian Basin Charter Specialist',
+                'header.badge': 'FAA Part 135 Certified Operator',
+                'lang.toggle': 'Español',
+                'trust.part135': 'Part 135',
+                'trust.part135.detail': 'Direct Fleet Control',
+                'trust.argus': 'ARGUS Gold',
+                'trust.argus.detail': 'Safety Validated',
+                'trust.transparent': 'Transparent',
+                'trust.transparent.detail': 'No Hidden Fees',
+                'hero.title': 'Midland to Houston in 60 Minutes. Guaranteed.',
+                'hero.subtitle': 'From Start to Finish, We\'ll Handle the Details',
+                'hero.description': 'Experience private aviation with complete Safety, Transparency, and Control. We\'re not brokers—we\'re direct operators with our own fleet.',
+                'path.b2b.title': 'Corporate Logistics',
+                'path.b2b.subtitle': 'Crew rotation • Executive shuttle • Rig tours',
+                'path.b2b.aria': 'Start corporate logistics inquiry',
+                'path.b2c.title': 'Private Travel',
+                'path.b2c.subtitle': 'Weekend escapes • Family trips • Events',
+                'path.b2c.aria': 'Start private travel inquiry',
+                'fleet.title': 'Mission-Matched Fleet',
+                'fleet.subtitle': 'The right aircraft for every mission',
+                'learjet.badge': 'Executive Shuttle',
+                'learjet.title': 'Learjet 45XR',
+                'learjet.tagline': 'Midland to Houston in 60 minutes',
+                'learjet.spec1': '535 MPH',
+                'learjet.spec1.detail': 'Fastest light jet in class',
+                'learjet.spec2': '8 passengers',
+                'learjet.spec2.detail': 'Full C-suite capacity',
+                'learjet.spec3': '2,049 NM range',
+                'learjet.spec3.detail': 'Intra-Texas + beyond',
+                'learjet.spec4': 'Corporate Wi-Fi',
+                'learjet.spec4.detail': 'Airborne office',
+                'learjet.usecases.title': 'Ideal For:',
+                'learjet.usecase1': 'Executive board meetings (MAF → HOU/DAL)',
+                'learjet.usecase2': 'Same-day client presentations',
+                'learjet.usecase3': 'Confidential negotiations',
+                'learjet.cta': 'Request Executive Quote',
+                'kingair.badge': 'Field Operations',
+                'kingair.title': 'King Air B200',
+                'kingair.tagline': 'Access remote fields commercial jets can\'t reach',
+                'kingair.spec1': 'Short-field capable',
+                'kingair.spec1.detail': '2,500 ft runways',
+                'kingair.spec2': '10 passengers',
+                'kingair.spec2.detail': 'Full crew rotation',
+                'kingair.spec3': 'Cost-efficient',
+                'kingair.spec3.detail': 'Turboprop economics',
+                'kingair.spec4': 'Cargo capacity',
+                'kingair.spec4.detail': 'Critical parts transport',
+                'kingair.usecases.title': 'Ideal For:',
+                'kingair.usecase1': 'Crew rotations to remote rig sites',
+                'kingair.usecase2': 'AOG emergency parts delivery',
+                'kingair.usecase3': 'Rig tours with multiple site stops',
+                'kingair.cta': 'Request Logistics Quote',
+                'operator.title': 'Why Direct Matters: Operator vs. Broker',
+                'operator.intro': 'In private aviation, who operates your flight determines your safety, reliability, and recourse.',
+                'dv.title': '✓ DV Aviation (Operator)',
+                'dv.benefit1.title': 'Direct fleet ownership',
+                'dv.benefit1.detail': 'We maintain our aircraft to our standards',
+                'dv.benefit2.title': 'Guaranteed availability',
+                'dv.benefit2.detail': 'Our planes. Your schedule.',
+                'dv.benefit3.title': 'Direct accountability',
+                'dv.benefit3.detail': 'You deal with the team flying your mission',
+                'dv.benefit4.title': 'Transparent pricing',
+                'dv.benefit4.detail': 'No broker markup. Itemized billing.',
+                'broker.title': '✗ Typical Brokers',
+                'broker.issue1.title': 'No fleet ownership',
+                'broker.issue1.detail': 'They find planes. You hope they\'re good.',
+                'broker.issue2.title': 'Network-dependent',
+                'broker.issue2.detail': 'Your mission waits for their contacts',
+                'broker.issue3.title': 'Multiple parties',
+                'broker.issue3.detail': 'Broker → Operator → You = gaps',
+                'broker.issue4.title': 'Hidden markups',
+                'broker.issue4.detail': 'Broker fees buried in quotes',
+                'sticky.call': 'Call 24/7',
+                'sticky.call.aria': 'Call DV Aviation 24/7',
+                'sticky.chat': 'Chat Now',
+                'sticky.chat.aria': 'Open chat with DV Aviation specialist',
+                'sticky.inquiry': 'Flight Inquiry',
+                'sticky.inquiry.aria': 'Submit flight inquiry form',
+                'chat.title': 'DV Aviation Specialist',
+                'chat.close.aria': 'Close chat',
+                'chat.quick.b2b': 'Corporate Logistics Quote',
+                'chat.quick.b2c': 'Private Travel Inquiry',
+                'chat.quick.safety': 'Safety Certifications',
+                'chat.quick.fleet': 'Fleet Availability',
+                'chat.placeholder': 'Ask about charter, logistics, safety...',
+                'chat.send.aria': 'Send message',
+                'chat.voice.aria': 'Voice input - Click to record',
+                'chat.typing': 'Typing',
+                'chat.error.empty': 'Please enter a message first',
+                'noscript.title': '⚠️ JavaScript Required for Full Experience',
+                'noscript.message': 'For best experience, please enable JavaScript or contact us directly:',
+                'noscript.phone': '📞 (432) 561-9111 - Available 24/7'
+            },
+            es: {
+                'page.title': 'DV Aviation - Especialista en Vuelos Chárter de la Cuenca Pérmica',
+                'skip.link': 'Saltar al contenido principal',
+                'header.tagline': 'Especialista en Vuelos Chárter de la Cuenca Pérmica de Texas',
+                'header.badge': 'Operador Certificado FAA Parte 135',
+                'lang.toggle': 'English',
+                'trust.part135': 'Parte 135',
+                'trust.part135.detail': 'Control Directo de Flota',
+                'trust.argus': 'ARGUS Oro',
+                'trust.argus.detail': 'Seguridad Validada',
+                'trust.transparent': 'Transparente',
+                'trust.transparent.detail': 'Sin Tarifas Ocultas',
+                'hero.title': 'Midland a Houston en 60 Minutos. Garantizado.',
+                'hero.subtitle': 'De Principio a Fin, Nos Encargamos de los Detalles',
+                'hero.description': 'Experimente la aviación privada con completa Seguridad, Transparencia y Control. No somos intermediarios—somos operadores directos con nuestra propia flota.',
+                'path.b2b.title': 'Logística Corporativa',
+                'path.b2b.subtitle': 'Rotación de personal • Transporte ejecutivo • Tours de plataformas',
+                'path.b2b.aria': 'Iniciar consulta de logística corporativa',
+                'path.b2c.title': 'Viajes Privados',
+                'path.b2c.subtitle': 'Escapadas de fin de semana • Viajes familiares • Eventos',
+                'path.b2c.aria': 'Iniciar consulta de viajes privados',
+                'fleet.title': 'Flota Adaptada a Su Misión',
+                'fleet.subtitle': 'El avión correcto para cada misión',
+                'learjet.badge': 'Transporte Ejecutivo',
+                'learjet.title': 'Learjet 45XR',
+                'learjet.tagline': 'Midland a Houston en 60 minutos',
+                'learjet.spec1': '535 MPH',
+                'learjet.spec1.detail': 'Jet ligero más rápido de su clase',
+                'learjet.spec2': '8 pasajeros',
+                'learjet.spec2.detail': 'Capacidad completa para directivos',
+                'learjet.spec3': 'Alcance de 2,049 MN',
+                'learjet.spec3.detail': 'Dentro de Texas y más allá',
+                'learjet.spec4': 'Wi-Fi Corporativo',
+                'learjet.spec4.detail': 'Oficina en el aire',
+                'learjet.usecases.title': 'Ideal Para:',
+                'learjet.usecase1': 'Juntas ejecutivas de directorio (MAF → HOU/DAL)',
+                'learjet.usecase2': 'Presentaciones a clientes el mismo día',
+                'learjet.usecase3': 'Negociaciones confidenciales',
+                'learjet.cta': 'Solicitar Cotización Ejecutiva',
+                'kingair.badge': 'Operaciones de Campo',
+                'kingair.title': 'King Air B200',
+                'kingair.tagline': 'Acceso a campos remotos que jets comerciales no pueden alcanzar',
+                'kingair.spec1': 'Capacidad de pista corta',
+                'kingair.spec1.detail': 'Pistas de 2,500 pies',
+                'kingair.spec2': '10 pasajeros',
+                'kingair.spec2.detail': 'Rotación completa de personal',
+                'kingair.spec3': 'Eficiente en costos',
+                'kingair.spec3.detail': 'Economía de turbohélice',
+                'kingair.spec4': 'Capacidad de carga',
+                'kingair.spec4.detail': 'Transporte de piezas críticas',
+                'kingair.usecases.title': 'Ideal Para:',
+                'kingair.usecase1': 'Rotaciones de personal a sitios de plataformas remotas',
+                'kingair.usecase2': 'Entrega de emergencia de piezas AOG',
+                'kingair.usecase3': 'Tours de plataformas con múltiples paradas',
+                'kingair.cta': 'Solicitar Cotización de Logística',
+                'operator.title': 'Por Qué Importa lo Directo: Operador vs. Intermediario',
+                'operator.intro': 'En aviación privada, quién opera su vuelo determina su seguridad, confiabilidad y recurso.',
+                'dv.title': '✓ DV Aviation (Operador)',
+                'dv.benefit1.title': 'Propiedad directa de flota',
+                'dv.benefit1.detail': 'Mantenemos nuestros aviones según nuestros estándares',
+                'dv.benefit2.title': 'Disponibilidad garantizada',
+                'dv.benefit2.detail': 'Nuestros aviones. Su horario.',
+                'dv.benefit3.title': 'Responsabilidad directa',
+                'dv.benefit3.detail': 'Usted trata con el equipo que vuela su misión',
+                'dv.benefit4.title': 'Precios transparentes',
+                'dv.benefit4.detail': 'Sin sobrecargo de intermediario. Facturación detallada.',
+                'broker.title': '✗ Intermediarios Típicos',
+                'broker.issue1.title': 'Sin propiedad de flota',
+                'broker.issue1.detail': 'Encuentran aviones. Usted espera que sean buenos.',
+                'broker.issue2.title': 'Dependientes de red',
+                'broker.issue2.detail': 'Su misión espera por sus contactos',
+                'broker.issue3.title': 'Múltiples partes',
+                'broker.issue3.detail': 'Intermediario → Operador → Usted = brechas',
+                'broker.issue4.title': 'Sobrecargos ocultos',
+                'broker.issue4.detail': 'Tarifas de intermediario escondidas en cotizaciones',
+                'sticky.call': 'Llamar 24/7',
+                'sticky.call.aria': 'Llamar a DV Aviation 24/7',
+                'sticky.chat': 'Chatear Ahora',
+                'sticky.chat.aria': 'Abrir chat con especialista de DV Aviation',
+                'sticky.inquiry': 'Consulta de Vuelo',
+                'sticky.inquiry.aria': 'Enviar formulario de consulta de vuelo',
+                'chat.title': 'Especialista de DV Aviation',
+                'chat.close.aria': 'Cerrar chat',
+                'chat.quick.b2b': 'Cotización de Logística Corporativa',
+                'chat.quick.b2c': 'Consulta de Viaje Privado',
+                'chat.quick.safety': 'Certificaciones de Seguridad',
+                'chat.quick.fleet': 'Disponibilidad de Flota',
+                'chat.placeholder': 'Pregunte sobre chárter, logística, seguridad...',
+                'chat.send.aria': 'Enviar mensaje',
+                'chat.voice.aria': 'Entrada de voz - Haga clic para grabar',
+                'chat.typing': 'Escribiendo',
+                'chat.error.empty': 'Por favor ingrese un mensaje primero',
+                'noscript.title': '⚠️ Se Requiere JavaScript para la Experiencia Completa',
+                'noscript.message': 'Para la mejor experiencia, por favor habilite JavaScript o contáctenos directamente:',
+                'noscript.phone': '📞 (432) 561-9111 - Disponible 24/7'
+            }
+        };
+
+        // Browser language detection
+        function detectBrowserLanguage() {
+            const browserLang = navigator.language || navigator.userLanguage;
+            // Check if Spanish (es, es-MX, es-US, etc.)
+            if (browserLang.toLowerCase().startsWith('es')) {
+                return 'es';
+            }
+            return 'en';
+        }
+
+        // Get stored language preference or detect from browser
+        function getInitialLanguage() {
+            const stored = localStorage.getItem('dvAviation_language');
+            if (stored && (stored === 'en' || stored === 'es')) {
+                return stored;
+            }
+            return detectBrowserLanguage();
+        }
+
+        // Translate page content
+        function translatePage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('dvAviation_language', lang);
+            document.documentElement.lang = lang;
+
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'TITLE') {
+                        element.textContent = translations[lang][key];
+                    } else if (element.hasAttribute('placeholder')) {
+                        element.placeholder = translations[lang][key];
+                    } else if (element.hasAttribute('aria-label')) {
+                        element.setAttribute('aria-label', translations[lang][key]);
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            // Update language toggle button
+            const langToggle = document.getElementById('languageToggle');
+            if (langToggle) {
+                langToggle.textContent = translations[lang]['lang.toggle'];
+                langToggle.setAttribute('aria-label', lang === 'en' ? 'Switch to Spanish' : 'Cambiar a inglés');
+            }
+        }
+
+        // Toggle between English and Spanish
+        function toggleLanguage() {
+            const newLang = currentLanguage === 'en' ? 'es' : 'en';
+            translatePage(newLang);
+        }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const initialLang = getInitialLanguage();
+            translatePage(initialLang);
+        });
+
+        // ========================================================================
+        // CHAT WIDGET & APP LOGIC
+        // ========================================================================
+
         // Define functions in head to ensure they're available when onclick handlers execute
         let API_URL, sessionId, userPath;
 
@@ -50,7 +319,22 @@
             const input = document.getElementById('chatInput');
             const message = input.value.trim();
 
-            if (!message) return;
+            // WEEK 2: Input validation with feedback (bilingual)
+            if (!message) {
+                input.classList.add('error');
+                input.setAttribute('aria-invalid', 'true');
+                input.placeholder = translations[currentLanguage]['chat.error.empty'];
+                setTimeout(() => {
+                    input.classList.remove('error');
+                    input.setAttribute('aria-invalid', 'false');
+                    input.placeholder = translations[currentLanguage]['chat.placeholder'];
+                }, 2000);
+                return;
+            }
+
+            // Clear any error state
+            input.classList.remove('error');
+            input.setAttribute('aria-invalid', 'false');
 
             // Add user message
             addMessage(message, 'user');
@@ -60,7 +344,7 @@
             document.getElementById('typingIndicator').classList.add('active');
 
             try {
-                // Use streaming endpoint for typewriter effect
+                // Use streaming endpoint for typewriter effect (with language parameter)
                 const response = await fetch(`${API_URL}/api/chat/message/stream`, {
                     method: 'POST',
                     headers: {
@@ -69,7 +353,8 @@
                     body: JSON.stringify({
                         message: message,
                         session_id: sessionId,
-                        user_path: userPath
+                        user_path: userPath,
+                        language: currentLanguage  // Pass current language to backend
                     })
                 });
 
@@ -209,23 +494,31 @@
                 reader.onloadend = async () => {
                     const base64Audio = reader.result.split(',')[1];
 
-                    // Send to STT endpoint (placeholder - implement when backend ready)
-                    // const sttResponse = await fetch(`${API_URL}/api/voice/transcribe`, {
-                    //     method: 'POST',
-                    //     headers: { 'Content-Type': 'application/json' },
-                    //     body: JSON.stringify({ audio_base64: base64Audio, session_id: sessionId })
-                    // });
-                    // const { text } = await sttResponse.json();
+                    try {
+                        // Send to STT endpoint for transcription
+                        const sttResponse = await fetch(`${API_URL}/api/voice/transcribe`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ audio_base64: base64Audio, session_id: sessionId })
+                        });
 
-                    // For now, use a placeholder
-                    const text = "Voice message received (transcription pending)";
+                        if (!sttResponse.ok) {
+                            throw new Error(`STT API error: ${sttResponse.status}`);
+                        }
 
-                    // Hide typing indicator
-                    document.getElementById('typingIndicator').classList.remove('active');
+                        const { text } = await sttResponse.json();
 
-                    // Add as user message and proceed with chat
-                    document.getElementById('chatInput').value = text;
-                    sendMessage();
+                        // Hide typing indicator
+                        document.getElementById('typingIndicator').classList.remove('active');
+
+                        // Add transcribed text to chat input and send
+                        document.getElementById('chatInput').value = text;
+                        sendMessage();
+                    } catch (sttError) {
+                        console.error('STT error:', sttError);
+                        document.getElementById('typingIndicator').classList.remove('active');
+                        alert('Voice transcription failed. Please try typing your message instead.');
+                    }
                 };
             } catch (error) {
                 console.error('Voice message error:', error);
@@ -288,6 +581,42 @@
 
             // Prevent zoom on input focus (iOS)
             document.addEventListener('touchstart', function() {}, {passive: true});
+
+            // WEEK 2 ENHANCEMENT: Sticky header condensed on scroll
+            let lastScrollTop = 0;
+            const header = document.querySelector('.mobile-header');
+            const stickyBar = document.querySelector('.mobile-sticky-bar');
+            let scrollTimeout;
+
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                // Condense header after scrolling down 50px
+                if (scrollTop > 50) {
+                    header.classList.add('condensed');
+                } else {
+                    header.classList.remove('condensed');
+                }
+
+                // Auto-hide sticky bar on scroll down, show on scroll up
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    // Scrolling down - hide sticky bar
+                    stickyBar.classList.add('hidden');
+                } else {
+                    // Scrolling up - show sticky bar
+                    stickyBar.classList.remove('hidden');
+                }
+
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+
+                // Clear previous timeout
+                clearTimeout(scrollTimeout);
+
+                // Show sticky bar again after user stops scrolling (1 second)
+                scrollTimeout = setTimeout(function() {
+                    stickyBar.classList.remove('hidden');
+                }, 1000);
+            }, {passive: true});
         });
     </script>
 
@@ -367,6 +696,54 @@
             margin-top: 0.5rem;
         }
 
+        /* Language Toggle Button (Bilingual Support) */
+        .language-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(176, 145, 116, 0.2);
+            border: 2px solid var(--tan-warm);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 48px;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .language-toggle:hover {
+            background: rgba(176, 145, 116, 0.4);
+            border-color: var(--gold-premium);
+            transform: scale(1.05);
+        }
+
+        .language-toggle:active {
+            transform: scale(0.98);
+        }
+
+        .language-toggle:focus-visible {
+            outline: 3px solid var(--gold-premium);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 6px rgba(212, 165, 116, 0.3);
+        }
+
+        /* Responsive: smaller on mobile */
+        @media (max-width: 400px) {
+            .language-toggle {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+                min-width: 44px;
+                min-height: 44px;
+            }
+        }
+
         /* Trust Bar - CRITICAL for HNWC */
         .trust-bar {
             background: rgba(255, 255, 255, 0.98);
@@ -421,22 +798,26 @@
 
         .hero-section h1 {
             color: var(--navy-deep);
-            font-size: 1.5rem;
+            /* Fluid typography: scales from 1.5rem (mobile) to 2.5rem (desktop) */
+            font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem);
             margin-bottom: 0.5rem;
-            line-height: 1.3;
+            line-height: 1.2;
         }
 
         .hero-section .subhead {
             color: var(--tan-warm);
-            font-size: 1rem;
+            /* Fluid: 1rem → 1.5rem */
+            font-size: clamp(1rem, 3vw + 0.5rem, 1.5rem);
             font-weight: 600;
             margin-bottom: 1rem;
+            line-height: 1.3;
         }
 
         .hero-section p {
             line-height: 1.6;
             margin-bottom: 1rem;
-            font-size: 0.9375rem;
+            /* Fluid: 0.9375rem → 1.125rem */
+            font-size: clamp(0.9375rem, 2vw + 0.5rem, 1.125rem);
         }
 
         /* Dual-Path Entry Buttons */
@@ -1000,6 +1381,23 @@
             border-color: var(--navy-deep);
         }
 
+        /* WEEK 2: Input validation error state */
+        .chat-input.error {
+            border-color: #DC3545;
+            background: #FFF5F5;
+            animation: shake 0.3s ease;
+        }
+
+        .chat-input[aria-invalid="true"] {
+            border-color: #DC3545;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
         .send-button {
             background: var(--navy-deep);
             color: var(--white);
@@ -1094,56 +1492,275 @@
                 padding-bottom: max(1rem, env(safe-area-inset-bottom));
             }
         }
+
+        /* ========================================================================
+           ACCESSIBILITY & UX IMPROVEMENTS (WCAG 2.1 AA Compliance)
+           Emergency hotfix based on comprehensive UX audit - Nov 2025
+           ======================================================================== */
+
+        /* 1. COLOR CONTRAST FIX - Header text on brown background
+           - Before: 3.2:1 (FAIL)
+           - After: 5.1:1+ (PASS)
+           - WCAG 1.4.3 Contrast (Minimum) - Level AA */
+        .mobile-header {
+            background: #3A2F26; /* Darkened from #5C4A3C for better contrast */
+        }
+
+        .logo, .tagline {
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Additional contrast boost */
+        }
+
+        /* 2. KEYBOARD FOCUS INDICATORS - Critical for keyboard navigation
+           - WCAG 2.4.7 Focus Visible - Level AA
+           - Pilots/executives often use laptops */
+        button:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid var(--tan-warm);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 6px rgba(212, 165, 116, 0.3);
+        }
+
+        .path-button:focus-visible,
+        .sticky-action:focus-visible {
+            outline: 3px solid #FFD700; /* Gold outline for high visibility */
+            outline-offset: 3px;
+        }
+
+        /* 3. SKIP NAVIGATION LINK - For keyboard accessibility
+           - WCAG 2.4.1 Bypass Blocks - Level A */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--navy-deep);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            z-index: 10000;
+            font-weight: 600;
+            border-radius: 0 0 4px 0;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* 4. TOUCH TARGET SIZE IMPROVEMENTS - Minimum 48x48px
+           - WCAG 2.5.5 Target Size - Level AAA (industry best practice)
+           - Critical for pilots with gloves, executives in moving vehicles */
+        .part-135-badge,
+        .trust-badge {
+            min-width: 48px;
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+        }
+
+        .voice-button,
+        .send-button {
+            min-width: 48px;
+            min-height: 48px;
+        }
+
+        .close-chat {
+            min-width: 48px;
+            min-height: 48px;
+            font-size: 1.5rem;
+        }
+
+        /* 5. BUTTON VISUAL FEEDBACK - Active states
+           - Nielsen Heuristic #1: Visibility of system status */
+        .path-button:active,
+        .sticky-action:active,
+        .cta-fleet:active {
+            transform: scale(0.97);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* 6. LOADING STATES - Visual feedback during API calls */
+        .loading {
+            position: relative;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: var(--white);
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* 7. STICKY BAR IMPROVEMENTS - Collapsible to reduce obstruction
+           - Addresses 15% vertical space consumption on small screens */
+        .mobile-sticky-bar {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .mobile-sticky-bar.collapsed {
+            transform: translateY(calc(100% - 44px));
+        }
+
+        /* Auto-hide on scroll down (Week 2 enhancement) */
+        .mobile-sticky-bar.hidden {
+            transform: translateY(100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .mobile-sticky-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+            margin-top: 8px;
+        }
+
+        /* Condensed header on scroll (Week 2 enhancement) */
+        .mobile-header.condensed {
+            padding: 0.5rem 1rem;
+        }
+
+        .mobile-header.condensed .logo img {
+            height: 32px;
+        }
+
+        .mobile-header.condensed .tagline {
+            font-size: 0.75rem;
+        }
+
+        .mobile-header.condensed .part-135-badge {
+            padding: 0.125rem 0.5rem;
+            font-size: 0.625rem;
+        }
+
+        /* 8. BUTTON HIERARCHY - Primary vs Secondary CTAs */
+        .sticky-action {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .sticky-action:first-child {
+            /* Primary CTA - Phone call (highest intent) */
+            background: var(--navy-deep);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .sticky-action:nth-child(2) {
+            /* Secondary CTA - Chat */
+            background: var(--tan-warm);
+        }
+
+        .sticky-action:last-child {
+            /* Tertiary CTA - Flight Inquiry */
+            background: rgba(92, 74, 60, 0.6);
+            font-size: 0.95rem;
+        }
+
+        /* 9. HIGH CONTRAST MODE SUPPORT */
+        @media (prefers-contrast: high) {
+            .mobile-header {
+                background: #000;
+                border-bottom: 4px solid #FFD700;
+            }
+
+            button:focus-visible {
+                outline-width: 4px;
+            }
+        }
+
+        /* 10. REDUCED MOTION SUPPORT - For users with vestibular disorders */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Skip Navigation Link - WCAG 2.4.1 Bypass Blocks -->
+    <a href="#main-content" class="skip-link" data-i18n="skip.link">Skip to main content</a>
+
     <!-- Header -->
-    <header class="mobile-header">
+    <header class="mobile-header" role="banner">
+        <!-- Language Toggle (Bilingual Support) -->
+        <button id="languageToggle" class="language-toggle" onclick="toggleLanguage()" aria-label="Switch to Spanish" data-i18n="lang.toggle">Español</button>
+
         <div class="logo">
             <img src="dv-aviation-logo.svg" alt="DV Aviation" />
         </div>
-        <div class="tagline">Texas's Permian Basin Charter Specialist</div>
-        <div class="part-135-badge">FAA Part 135 Certified Operator</div>
+        <div class="tagline" data-i18n="header.tagline">Texas's Permian Basin Charter Specialist</div>
+        <div class="part-135-badge" data-i18n="header.badge">FAA Part 135 Certified Operator</div>
     </header>
 
     <!-- Trust Bar - Above Fold -->
     <div class="trust-bar">
         <div class="trust-item">
-            <div class="trust-icon">🛡️</div>
-            <div class="trust-label">Part 135</div>
-            <div class="trust-detail">Direct Fleet Control</div>
+            <div class="trust-icon" role="img" aria-label="Safety certification">🛡️</div>
+            <div class="trust-label" data-i18n="trust.part135">Part 135</div>
+            <div class="trust-detail" data-i18n="trust.part135.detail">Direct Fleet Control</div>
         </div>
         <div class="trust-item">
-            <div class="trust-icon">⭐</div>
-            <div class="trust-label">ARGUS Gold</div>
-            <div class="trust-detail">Safety Validated</div>
+            <div class="trust-icon" role="img" aria-label="ARGUS Gold rating">⭐</div>
+            <div class="trust-label" data-i18n="trust.argus">ARGUS Gold</div>
+            <div class="trust-detail" data-i18n="trust.argus.detail">Safety Validated</div>
         </div>
         <div class="trust-item">
-            <div class="trust-icon">💳</div>
-            <div class="trust-label">Transparent</div>
-            <div class="trust-detail">No Hidden Fees</div>
+            <div class="trust-icon" role="img" aria-label="Transparent pricing">💳</div>
+            <div class="trust-label" data-i18n="trust.transparent">Transparent</div>
+            <div class="trust-detail" data-i18n="trust.transparent.detail">No Hidden Fees</div>
         </div>
     </div>
 
     <!-- Main Content -->
-    <main class="mobile-content">
+    <main id="main-content" class="mobile-content" role="main">
         <!-- Hero Section -->
         <div class="hero-section">
-            <h1>Midland to Houston in 60 Minutes. Guaranteed.</h1>
-            <p class="subhead">From Start to Finish, We'll Handle the Details</p>
-            <p>Experience private aviation with complete Safety, Transparency, and Control. We're not brokers—we're direct operators with our own fleet.</p>
+            <h1 data-i18n="hero.title">Midland to Houston in 60 Minutes. Guaranteed.</h1>
+            <p class="subhead" data-i18n="hero.subtitle">From Start to Finish, We'll Handle the Details</p>
+            <p data-i18n="hero.description">Experience private aviation with complete Safety, Transparency, and Control. We're not brokers—we're direct operators with our own fleet.</p>
 
             <!-- Dual-Path Entry -->
             <div class="dual-path-grid">
-                <button class="path-button" onclick="openB2BPath()">
-                    <div class="path-icon">🏢</div>
-                    <div class="path-title">Corporate Logistics</div>
-                    <div class="path-subtitle">Crew rotation • Executive shuttle • Rig tours</div>
+                <button class="path-button" onclick="openB2BPath()" aria-label="Start corporate logistics inquiry" data-i18n="path.b2b.aria">
+                    <div class="path-icon" role="img" aria-label="Corporate building">🏢</div>
+                    <div class="path-title" data-i18n="path.b2b.title">Corporate Logistics</div>
+                    <div class="path-subtitle" data-i18n="path.b2b.subtitle">Crew rotation • Executive shuttle • Rig tours</div>
                 </button>
-                <button class="path-button" onclick="openB2CPath()">
-                    <div class="path-icon">✈️</div>
-                    <div class="path-title">Private Travel</div>
-                    <div class="path-subtitle">Weekend escapes • Family trips • Events</div>
+                <button class="path-button" onclick="openB2CPath()" aria-label="Start private travel inquiry" data-i18n="path.b2c.aria">
+                    <div class="path-icon" role="img" aria-label="Private aircraft">✈️</div>
+                    <div class="path-title" data-i18n="path.b2c.title">Private Travel</div>
+                    <div class="path-subtitle" data-i18n="path.b2c.subtitle">Weekend escapes • Family trips • Events</div>
                 </button>
             </div>
         </div>
@@ -1278,68 +1895,84 @@
     </footer>
 
     <!-- Sticky Mobile Action Bar -->
-    <div class="mobile-sticky-bar">
-        <a href="tel:+14325619111" class="sticky-action phone">
-            <span>📞</span>
-            <span>Call 24/7</span>
+    <div class="mobile-sticky-bar" role="navigation" aria-label="Contact actions">
+        <a href="tel:+14325619111" class="sticky-action phone" aria-label="Call DV Aviation 24/7" data-i18n="sticky.call.aria">
+            <span role="img" aria-label="Phone">📞</span>
+            <span data-i18n="sticky.call">Call 24/7</span>
         </a>
-        <button class="sticky-action" onclick="openChat()">
-            <span>💬</span>
-            <span>Chat Now</span>
+        <button class="sticky-action" onclick="openChat()" aria-label="Open chat with DV Aviation specialist" data-i18n="sticky.chat.aria">
+            <span role="img" aria-label="Chat bubble">💬</span>
+            <span data-i18n="sticky.chat">Chat Now</span>
         </button>
-        <a href="https://dvaviation.com/private-charter/" class="sticky-action" style="text-decoration: none;">
-            <span>✈️</span>
-            <span>Flight Inquiry</span>
+        <a href="https://dvaviation.com/private-charter/" class="sticky-action" style="text-decoration: none;" aria-label="Submit flight inquiry form" data-i18n="sticky.inquiry.aria">
+            <span role="img" aria-label="Aircraft">✈️</span>
+            <span data-i18n="sticky.inquiry">Flight Inquiry</span>
         </a>
     </div>
 
     <!-- Chat Modal -->
-    <div id="chatModal" class="chat-modal">
+    <div id="chatModal" class="chat-modal" role="dialog" aria-labelledby="chat-title" aria-modal="true">
         <div class="chat-header">
-            <h3>💬 DV Aviation Specialist</h3>
-            <button class="close-chat" onclick="closeChat()">×</button>
+            <h3 id="chat-title"><span role="img" aria-label="Chat">💬</span> <span data-i18n="chat.title">DV Aviation Specialist</span></h3>
+            <button class="close-chat" onclick="closeChat()" aria-label="Close chat" data-i18n="chat.close.aria">×</button>
         </div>
         <div id="chatMessages" class="chat-messages">
             <div class="message bot">
                 <p><strong>Welcome to DV Aviation—Midland's Part 135 charter specialist.</strong></p>
                 <p>I can help you with:</p>
                 <div class="quick-replies">
-                    <button class="quick-reply" onclick="sendQuickReply('Request corporate logistics quote for Permian Basin crew rotation')">
-                        <span class="quick-reply-icon">🏢</span>
+                    <button class="quick-reply" onclick="sendQuickReply('Request corporate logistics quote for Permian Basin crew rotation')" aria-label="Request corporate logistics quote">
+                        <span class="quick-reply-icon" role="img" aria-label="Corporate">🏢</span>
                         Corporate Logistics Quote
                     </button>
-                    <button class="quick-reply" onclick="sendQuickReply('Tell me about private travel options for weekend getaways')">
-                        <span class="quick-reply-icon">✈️</span>
+                    <button class="quick-reply" onclick="sendQuickReply('Tell me about private travel options for weekend getaways')" aria-label="Ask about private travel options">
+                        <span class="quick-reply-icon" role="img" aria-label="Aircraft">✈️</span>
                         Private Travel
                     </button>
-                    <button class="quick-reply" onclick="sendQuickReply('Show me your safety credentials and Part 135 certifications')">
-                        <span class="quick-reply-icon">🛡️</span>
+                    <button class="quick-reply" onclick="sendQuickReply('Show me your safety credentials and Part 135 certifications')" aria-label="View safety credentials">
+                        <span class="quick-reply-icon" role="img" aria-label="Safety shield">🛡️</span>
                         Safety Info
                     </button>
-                    <button class="quick-reply" onclick="sendQuickReply('I need emergency AOG support right now')">
-                        <span class="quick-reply-icon">🚨</span>
+                    <button class="quick-reply" onclick="sendQuickReply('I need emergency AOG support right now')" aria-label="Request emergency AOG support">
+                        <span class="quick-reply-icon" role="img" aria-label="Emergency alert">🚨</span>
                         Emergency AOG
                     </button>
                 </div>
                 <p style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.8;">Or type your question below</p>
             </div>
         </div>
-        <div class="typing-indicator" id="typingIndicator">
+        <div class="typing-indicator" id="typingIndicator" aria-live="polite" aria-label="AI is typing">
             <span></span>
             <span></span>
             <span></span>
         </div>
         <div class="chat-input-container">
-            <button id="micButton" class="voice-button" onclick="toggleVoiceRecording()" title="Voice input">
-                <span id="micIcon">🎤</span>
+            <button id="micButton" class="voice-button" onclick="toggleVoiceRecording()" aria-label="Voice input - Click to record" data-i18n="chat.voice.aria">
+                <span id="micIcon" role="img" aria-label="Microphone">🎤</span>
             </button>
-            <input type="text" id="chatInput" class="chat-input" placeholder="Ask about charter, logistics, safety..." />
-            <button id="sendButton" class="send-button" onclick="sendMessage()">▶</button>
+            <input type="text" id="chatInput" class="chat-input" placeholder="Ask about charter, logistics, safety..." aria-label="Chat message input" data-i18n="chat.placeholder" />
+            <button id="sendButton" class="send-button" onclick="sendMessage()" aria-label="Send message" data-i18n="chat.send.aria">▶</button>
         </div>
     </div>
 
     <!-- Audio player (hidden) -->
     <audio id="audioPlayer" style="display: none;"></audio>
+
+    <!-- Noscript fallback for accessibility and error recovery -->
+    <noscript>
+        <div style="position: fixed; bottom: 0; left: 0; right: 0;
+                    background: #2C3E50; color: white; padding: 1.5rem;
+                    text-align: center; z-index: 9999; box-shadow: 0 -4px 12px rgba(0,0,0,0.3);">
+            <strong style="display: block; margin-bottom: 0.5rem; font-size: 1.1rem;">⚠️ JavaScript Required for Full Experience</strong>
+            <p style="margin: 0.5rem 0; font-size: 0.95rem;">For best experience, please enable JavaScript or contact us directly:</p>
+            <a href="tel:+14325619111"
+               style="color: #D4A574; font-weight: bold; font-size: 1.2rem; text-decoration: none;
+                      display: inline-block; margin-top: 0.5rem; padding: 0.5rem 1rem;
+                      background: rgba(212, 165, 116, 0.2); border-radius: 4px;">
+                📞 (432) 561-9111 - Available 24/7
+            </a>
+        </div>
+    </noscript>
 
 </body>
 </html>
