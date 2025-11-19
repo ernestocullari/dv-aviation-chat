@@ -388,13 +388,31 @@ async def serve_demo():
         raise HTTPException(status_code=404, detail="Demo page not found")
 
 @app.get("/dv-aviation-logo.svg")
-async def serve_logo():
+async def serve_dv_logo():
     """Serve DV Aviation brand logo"""
     logo_path = Path(__file__).parent / "static" / "dv-aviation-logo.svg"
     if logo_path.exists():
         return FileResponse(logo_path, media_type="image/svg+xml")
     else:
         raise HTTPException(status_code=404, detail="Logo not found")
+
+@app.get("/artemis-logo.png")
+async def serve_artemis_logo():
+    """Serve Artemis Targeting logo"""
+    logo_path = Path(__file__).parent / "static" / "artemis-logo.png"
+    if logo_path.exists():
+        return FileResponse(logo_path, media_type="image/png")
+    else:
+        raise HTTPException(status_code=404, detail="Artemis logo not found")
+
+@app.get("/artemis-brand.png")
+async def serve_artemis_brand():
+    """Serve Artemis Targeting brand mark"""
+    logo_path = Path(__file__).parent / "static" / "artemis-brand.png"
+    if logo_path.exists():
+        return FileResponse(logo_path, media_type="image/png")
+    else:
+        raise HTTPException(status_code=404, detail="Artemis brand not found")
 
 # ============================================================================
 # STARTUP
