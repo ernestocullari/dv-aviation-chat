@@ -10,7 +10,7 @@ anthropic==0.40.0
 elevenlabs==1.56.0
 
 # Utilities
-pydantic==2.5.0
+pydantic>=2.10.0  # Compatible with elevenlabs 1.56.0 (requires pydantic-core>=2.18.2)
 python-multipart==0.0.6
 
 # Logging
