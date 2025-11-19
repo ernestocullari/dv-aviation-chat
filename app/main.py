@@ -378,6 +378,15 @@ async def serve_mobile_demo():
     else:
         raise HTTPException(status_code=404, detail="Mobile demo not found")
 
+@app.get("/demo")
+async def serve_demo():
+    """Serve professional demo page"""
+    demo_path = Path(__file__).parent / "static" / "demo.html"
+    if demo_path.exists():
+        return FileResponse(demo_path, media_type="text/html")
+    else:
+        raise HTTPException(status_code=404, detail="Demo page not found")
+
 @app.get("/dv-aviation-logo.svg")
 async def serve_logo():
     """Serve DV Aviation brand logo"""

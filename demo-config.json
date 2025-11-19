@@ -1,0 +1,49 @@
+{
+  "dv-aviation": {
+    "name": "DV Aviation",
+    "tagline": "Texas's Permian Basin Charter Specialist",
+    "description": "FAA Part 135 certified private jet charter operator",
+    "logo": "/dv-aviation-logo.svg",
+    "primaryColor": "#1E3A8A",
+    "secondaryColor": "#2C3E50",
+    "accentColor": "#3A2F26",
+    "phone": "432-561-9111",
+    "email": "customerservice@dvaviation.com",
+    "address": "8818 W Hwy 80, Midland, TX 79706",
+    "website": "https://dvaviation.com",
+    "chatConfig": {
+      "enableVoice": true,
+      "welcomeMessage": "Welcome to DV Aviation—Midland's Part 135 charter specialist. I can help you with corporate logistics, private travel, safety info, or emergency AOG support.",
+      "placeholder": "Ask about charter, logistics, safety...",
+      "quickButtons": [
+        {"icon": "🏢", "text": "Corporate Logistics Quote", "context": "corporate_logistics"},
+        {"icon": "✈️", "text": "Private Travel", "context": "private_travel"},
+        {"icon": "🛡️", "text": "Safety Info", "context": "safety_credentials"},
+        {"icon": "🚨", "text": "Emergency AOG", "context": "emergency_aog"}
+      ]
+    }
+  },
+  "artemis-targeting": {
+    "name": "Artemis Targeting",
+    "tagline": "AI-Powered Advertising Intelligence",
+    "description": "Natural language targeting consultation for marketing campaigns",
+    "logo": "/artemis-logo.png",
+    "primaryColor": "#8B5CF6",
+    "secondaryColor": "#6366F1",
+    "accentColor": "#4F46E5",
+    "phone": "Contact via chat",
+    "email": "support@artemistargeting.com",
+    "website": "https://www.artemistargeting.com",
+    "chatConfig": {
+      "enableVoice": false,
+      "welcomeMessage": "Welcome to Artemis Targeting! I can help you find the perfect audience segments for your advertising campaigns. What type of business are you targeting?",
+      "placeholder": "Describe your target audience...",
+      "quickButtons": [
+        {"icon": "🏢", "text": "B2B Targeting", "context": "b2b_targeting"},
+        {"icon": "👥", "text": "Consumer Targeting", "context": "b2c_targeting"},
+        {"icon": "📍", "text": "Geofencing", "context": "geofencing"},
+        {"icon": "💰", "text": "Budget Optimization", "context": "budget_optimization"}
+      ]
+    }
+  }
+}

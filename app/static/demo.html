@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DV Aviation AI Chat Agent - Live Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        /* Header with logos */
+        .header {
+            background: linear-gradient(135deg, #1E3A8A 0%, #2C3E50 100%);
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .client-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .client-logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .client-logo span {
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .built-by {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: white;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .built-by:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .built-by img {
+            height: 40px;
+            width: auto;
+        }
+
+        .built-by span {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Main content */
+        .content {
+            padding: 50px 30px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.4em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Status badges */
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .badge {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Landing page link */
+        .landing-link {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 15px 30px;
+            background: #1E3A8A;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: block;
+            text-align: center;
+            max-width: 300px;
+            margin: 20px auto;
+        }
+
+        .landing-link:hover {
+            background: #2C3E50;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(30, 58, 138, 0.4);
+        }
+
+        /* Features grid */
+        .section {
+            margin: 60px 0;
+        }
+
+        .section h2 {
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #1a1a1a;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: #1E3A8A;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-card li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .feature-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Try it section */
+        .try-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 50px;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .try-section h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .try-section p {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+
+        .try-section ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: left;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .try-section li {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 1.1em;
+        }
+
+        .open-chat-btn {
+            background: white;
+            color: #667eea;
+            padding: 18px 40px;
+            font-size: 1.2em;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .open-chat-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Status metrics */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .status-card {
+            text-align: center;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+        }
+
+        .status-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .status-label {
+            font-size: 1em;
+            color: #666;
+        }
+
+        /* Powered by footer */
+        .powered-by {
+            background: #f8f9fa;
+            padding: 40px;
+            margin-top: 60px;
+            border-top: 3px solid #667eea;
+            text-align: center;
+        }
+
+        .powered-by h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .powered-by p {
+            font-size: 1.1em;
+            color: #666;
+            max-width: 800px;
+            margin: 15px auto;
+            line-height: 1.8;
+        }
+
+        .powered-by a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .powered-by a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .header {
+                justify-content: center;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .status-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header with logos -->
+        <div class="header">
+            <div class="client-logo">
+                <img src="/dv-aviation-logo.svg" alt="DV Aviation Logo">
+                <span>Client</span>
+            </div>
+            <a href="https://www.artemistargeting.com" class="built-by" target="_blank">
+                <img src="https://www.artemistargeting.com/artemis-logo.png" alt="Artemis Targeting Logo">
+                <span>Built by Artemis Targeting</span>
+            </a>
+        </div>
+
+        <!-- Main content -->
+        <div class="content">
+            <h1>💬 AI Chat Agent Demo</h1>
+            <p class="subtitle">Intelligent Aviation Support for DV Aviation</p>
+
+            <!-- Status badges -->
+            <div class="badges">
+                <div class="badge">✅ Live & Running</div>
+                <div class="badge">🚀 Production Ready</div>
+                <div class="badge">🧠 AI-Powered</div>
+                <div class="badge">📱 Mobile Friendly</div>
+                <div class="badge">🔒 Secure & Private</div>
+            </div>
+
+            <!-- Landing page link -->
+            <a href="/" class="landing-link">🏠 View Full Landing Page</a>
+
+            <!-- Features section -->
+            <div class="section">
+                <h2>✨ Features & Benefits</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎤</div>
+                        <h3>Voice-Enabled Chat</h3>
+                        <ul>
+                            <li>Hands-free voice input for pilots</li>
+                            <li>Natural voice conversation</li>
+                            <li>Real-time speech recognition</li>
+                            <li>Perfect for cockpit/flight line use</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Enterprise-Grade Security</h3>
+                        <ul>
+                            <li>SSL/TLS encryption for all data</li>
+                            <li>No conversation data sharing</li>
+                            <li>GDPR & privacy compliant</li>
+                            <li>Secure cloud infrastructure</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>Aviation Intelligence</h3>
+                        <ul>
+                            <li>Part 135 operations expertise</li>
+                            <li>Charter pricing intelligence</li>
+                            <li>Aircraft availability awareness</li>
+                            <li>Permian Basin route knowledge</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">⚙️</div>
+                        <h3>Custom Coded Solution</h3>
+                        <ul>
+                            <li>Built from scratch (not a template)</li>
+                            <li>Tailored to DV Aviation needs</li>
+                            <li>Production-ready architecture</li>
+                            <li>Scalable & maintainable</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <h3>Superior User Experience</h3>
+                        <ul>
+                            <li>24/7 instant availability</li>
+                            <li>Mobile-responsive design</li>
+                            <li>Streaming real-time responses</li>
+                            <li>Bilingual (English/Spanish)</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">✈️</div>
+                        <h3>Aviation Expertise</h3>
+                        <ul>
+                            <li>Charter flight consultation</li>
+                            <li>Aircraft management guidance</li>
+                            <li>Maintenance services info</li>
+                            <li>Emergency AOG support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Try it section -->
+            <div class="try-section">
+                <h3>👇 Try the Chat Agent Now</h3>
+                <p>Look for the <strong>chat button in the bottom-right corner</strong> of your screen (💬).</p>
+                <p>Click it to start a conversation! Try asking:</p>
+                <ul>
+                    <li>"What aircraft do you have available?"</li>
+                    <li>"How much does a flight from Midland to Houston cost?"</li>
+                    <li>"What makes you different from brokers?"</li>
+                    <li>"Do you provide aircraft management services?"</li>
+                    <li>"Can you handle emergency AOG situations?"</li>
+                </ul>
+                <button class="open-chat-btn" onclick="openChatWidget()">💬 Start Conversation</button>
+            </div>
+
+            <!-- Status section -->
+            <div class="section">
+                <h2>📊 Live System Status</h2>
+                <div class="status-grid">
+                    <div class="status-card">
+                        <div class="status-value">2</div>
+                        <div class="status-label">Aircraft</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-value">4</div>
+                        <div class="status-label">Service Types</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-value">&lt;2s</div>
+                        <div class="status-label">Response Time</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-value">✓</div>
+                        <div class="status-label">System Healthy</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Powered by section -->
+            <div class="powered-by">
+                <h3>🎯 Powered by Artemis Targeting</h3>
+                <p>A completely custom-coded AI chat agent designed specifically for DV Aviation's unique needs. No generic chatbot templates—every line of code is purpose-built for exceptional aviation customer service, safety-first communication, and professional client support.</p>
+                <p><a href="https://www.artemistargeting.com" target="_blank">↗️ Visit artemistargeting.com</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load chat widget -->
+    <script>
+        function openChatWidget() {
+            // Try to find and click the chat button
+            const chatButton = document.querySelector('[aria-label*="chat" i], [class*="chat" i] button, button[onclick*="chat" i]');
+            if (chatButton) {
+                chatButton.click();
+            } else {
+                alert('Chat widget will load momentarily. Look for the 💬 button in the bottom-right corner!');
+            }
+        }
+    </script>
+</body>
+</html>
