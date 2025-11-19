@@ -60,7 +60,8 @@
             document.getElementById('typingIndicator').classList.add('active');
 
             try {
-                const response = await fetch(`${API_URL}/api/chat/message`, {
+                // Use streaming endpoint for typewriter effect
+                const response = await fetch(`${API_URL}/api/chat/message/stream`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -72,18 +73,72 @@
                     })
                 });
 
-                const data = await response.json();
-
                 // Hide typing indicator
                 document.getElementById('typingIndicator').classList.remove('active');
 
-                // Add bot response
-                addMessage(data.response, 'bot');
+                // Create bot message container
+                const messagesContainer = document.getElementById('chatMessages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message bot';
+                const p = document.createElement('p');
+                messageDiv.appendChild(p);
+                messagesContainer.appendChild(messageDiv);
+
+                // Read SSE stream
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
+                let buffer = '';
+                let fullText = '';
+
+                while (true) {
+                    const {done, value} = await reader.read();
+                    if (done) break;
+
+                    buffer += decoder.decode(value, {stream: true});
+                    const lines = buffer.split('\n');
+                    buffer = lines.pop(); // Keep incomplete line in buffer
+
+                    for (const line of lines) {
+                        if (line.startsWith('data: ')) {
+                            const chunk = line.slice(6); // Remove "data: " prefix
+
+                            // Add chunk character by character with delay
+                            for (const char of chunk) {
+                                fullText += char;
+                                p.innerHTML = formatBotMessage(fullText);
+                                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                                // Small delay for typewriter effect (3ms per character)
+                                await new Promise(resolve => setTimeout(resolve, 3));
+                            }
+                        }
+                    }
+                }
+
             } catch (error) {
                 console.error('Error:', error);
                 document.getElementById('typingIndicator').classList.remove('active');
                 addMessage('Sorry, I encountered an error. Please call us at 432-561-9111 for immediate assistance.', 'bot');
             }
+        }
+
+        function formatBotMessage(text) {
+            // Convert markdown-style formatting to HTML
+            // Handle paragraphs (double newlines)
+            let formatted = text
+                .split('\n\n')
+                .map(para => para.trim())
+                .filter(para => para.length > 0)
+                .map(para => `<span class="paragraph">${para}</span>`)
+                .join('<br><br>');
+
+            // Handle bold **text**
+            formatted = formatted.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+            // Handle bullet points
+            formatted = formatted.replace(/^[•\-\*]\s+(.+)$/gm, '<span class="bullet">• $1</span>');
+
+            return formatted;
         }
 
         function addMessage(text, sender) {
@@ -690,16 +745,45 @@
         }
 
         .message.bot p {
-            margin: 0.5rem 0;
-            line-height: 1.5;
+            margin: 0;
+            line-height: 1.6;
             font-size: 0.9375rem;
             color: var(--text-dark);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: pre-wrap;
         }
 
         .message.user p {
             margin: 0;
-            line-height: 1.5;
+            line-height: 1.6;
             font-size: 0.9375rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
+        /* Paragraph spacing within bot messages */
+        .message.bot .paragraph {
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .message.bot .paragraph:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Bullet points in bot messages */
+        .message.bot .bullet {
+            display: block;
+            margin-left: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Bold text in bot messages */
+        .message.bot strong {
+            font-weight: 600;
+            color: var(--navy-deep);
         }
 
         /* Quick Reply Buttons in Chat */
