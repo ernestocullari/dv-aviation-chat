@@ -1,5 +1,6 @@
 # DV Aviation Chat Agent - Minimal Dependencies
 # L7 Pilot Deployment - Only what's needed
+# Updated: 2025-11-19 - elevenlabs SDK upgraded to 1.50+ for STT
 
 # FastAPI and ASGI server
 fastapi==0.104.1
