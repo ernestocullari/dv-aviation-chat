@@ -22,4 +22,4 @@ EXPOSE 8080
 
 # Run the application
 CMD exec uvicorn app.main:app --host 0.0.0.0 --port ${PORT} --workers 1
-# Force rebuild - 2025-11-19 language button fix
+# Force rebuild - 2025-11-19 language button at red X position
