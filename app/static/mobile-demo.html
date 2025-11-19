@@ -270,6 +270,12 @@
         function toggleLanguage() {
             const newLang = currentLanguage === 'en' ? 'es' : 'en';
             translatePage(newLang);
+
+            // Update sticky bar button label
+            const label = document.getElementById('languageLabel');
+            if (label) {
+                label.textContent = newLang === 'en' ? 'EN' : 'ES';
+            }
         }
 
         // Initialize language on page load
@@ -694,54 +700,6 @@
             font-size: 0.75rem;
             font-weight: 700;
             margin-top: 0.5rem;
-        }
-
-        /* Language Toggle Button (Bilingual Support) */
-        .language-toggle {
-            position: fixed;
-            bottom: 10rem;
-            right: 1rem;
-            background: rgba(176, 145, 116, 0.2);
-            border: 2px solid var(--tan-warm);
-            color: var(--white);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 48px;
-            min-height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 201;
-        }
-
-        .language-toggle:hover {
-            background: rgba(176, 145, 116, 0.4);
-            border-color: var(--gold-premium);
-            transform: scale(1.05);
-        }
-
-        .language-toggle:active {
-            transform: scale(0.98);
-        }
-
-        .language-toggle:focus-visible {
-            outline: 3px solid var(--gold-premium);
-            outline-offset: 2px;
-            box-shadow: 0 0 0 6px rgba(212, 165, 116, 0.3);
-        }
-
-        /* Responsive: smaller on mobile */
-        @media (max-width: 400px) {
-            .language-toggle {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.8rem;
-                min-width: 44px;
-                min-height: 44px;
-            }
         }
 
         /* Trust Bar - CRITICAL for HNWC */
@@ -1713,9 +1671,6 @@
 
     <!-- Header -->
     <header class="mobile-header" role="banner">
-        <!-- Language Toggle (Bilingual Support) -->
-        <button id="languageToggle" class="language-toggle" onclick="toggleLanguage()" aria-label="Switch to Spanish" data-i18n="lang.toggle">Español</button>
-
         <div class="logo">
             <img src="dv-aviation-logo.svg" alt="DV Aviation" />
         </div>
@@ -1908,6 +1863,10 @@
             <span role="img" aria-label="Aircraft">✈️</span>
             <span data-i18n="sticky.inquiry">Flight Inquiry</span>
         </a>
+        <button class="sticky-action language-btn" onclick="toggleLanguage()" aria-label="Switch language">
+            <span role="img" aria-label="Language">🌐</span>
+            <span id="languageLabel">EN</span>
+        </button>
     </div>
 
     <!-- Chat Modal -->
