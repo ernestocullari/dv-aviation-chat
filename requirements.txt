@@ -1,6 +1,5 @@
-# DV Aviation Chat Agent - Minimal Dependencies
-# L7 Pilot Deployment - Only what's needed
-# Updated: 2025-11-19 - elevenlabs SDK upgraded to 1.50+ for STT
+# DV Aviation Chat Agent - Dependencies
+# UPDATED: 2025-11-19 07:00 UTC - FRESH FILE
 
 # FastAPI and ASGI server
 fastapi==0.104.1
@@ -8,14 +7,11 @@ uvicorn[standard]==0.24.0
 
 # AI
 anthropic==0.40.0
-elevenlabs==1.56.0  # Requires speech_to_text.convert() method (version verified working)
+elevenlabs==1.56.0
 
 # Utilities
 pydantic==2.5.0
 python-multipart==0.0.6
 
-# Logging (structured - for production)
+# Logging
 structlog==23.2.0
-
-# That's it! ~6 dependencies for pilot
-# Add more ONLY after validating this works
