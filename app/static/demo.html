@@ -509,17 +509,32 @@
         </div>
     </div>
 
-    <!-- Load chat widget -->
+    <!-- Simple chat widget -->
+    <div id="chatWidget" style="display: none; position: fixed; bottom: 20px; right: 20px; width: 400px; max-width: calc(100vw - 40px); height: 600px; max-height: calc(100vh - 100px); background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 10000; flex-direction: column;">
+        <div style="background: linear-gradient(135deg, #2E394C 0%, #3E3025 100%); color: white; padding: 20px; border-radius: 20px 20px 0 0; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="margin: 0; font-size: 1.2em;">💬 DV Aviation Chat</h3>
+            <button onclick="closeChatWidget()" style="background: rgba(255,255,255,0.2); border: none; color: white; font-size: 24px; cursor: pointer; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">&times;</button>
+        </div>
+        <iframe src="/mobile" style="flex: 1; border: none; width: 100%; height: calc(100% - 70px);"></iframe>
+    </div>
+
     <script>
         function openChatWidget() {
-            // Try to find and click the chat button
-            const chatButton = document.querySelector('[aria-label*="chat" i], [class*="chat" i] button, button[onclick*="chat" i]');
-            if (chatButton) {
-                chatButton.click();
-            } else {
-                alert('Chat widget will load momentarily. Look for the 💬 button in the bottom-right corner!');
-            }
+            const widget = document.getElementById('chatWidget');
+            widget.style.display = 'flex';
         }
+
+        function closeChatWidget() {
+            const widget = document.getElementById('chatWidget');
+            widget.style.display = 'none';
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeChatWidget();
+            }
+        });
     </script>
 </body>
 </html>
