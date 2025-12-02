@@ -176,19 +176,19 @@
         "segment": "Permian Basin Corporate Traveler",
         "description": "Time-critical corporate charter for Permian Basin operations. Crew rotations, executive shuttles, and rig tours executed with operational reliability and speed. When downtime costs $50,000/hour, charter is an operational necessity, not a luxury.",
         "features": [
-          "Guaranteed 4-hour AOG response time",
-          "Learjet 45XR for high-speed executive shuttle (MAF → HOU in 60 min)",
-          "King Air B200 for remote field access (2,500 ft runways)",
-          "Mission-specific aircraft matching",
-          "Fixed rates available for recurring Permian Basin routes (\"Permian Shuttle Rate\")",
-          "Transparent, itemized billing"
+          "Guaranteed 4-hour AOG response time.",
+          "Learjet 45XR for high-speed executive shuttle. Midland to Houston in 60 minutes.",
+          "King Air B200 for remote field access. Capable of 2,500 foot runways.",
+          "Mission-specific aircraft matching.",
+          "Fixed rates available for recurring Permian Basin routes.",
+          "Transparent, itemized billing."
         ],
         "benefits": [
-          "Maximized executive billable hours",
-          "Reduced operational downtime (crew rotations <4 hours notice)",
-          "Access to 4,000+ airports (remote rig sites)",
-          "Predictable costs for recurring routes",
-          "Complete operational control"
+          "Maximized executive billable hours.",
+          "Reduced operational downtime. Crew rotations with less than 4 hours notice.",
+          "Access to over 4,000 airports including remote rig sites.",
+          "Predictable costs for recurring routes.",
+          "Complete operational control."
         ],
         "decision_makers": [
           "CFOs (cost management, transparent billing)",
@@ -208,23 +208,23 @@
         "description": "Personalized private aviation for lifestyle and recreational travel. Weekend escapes, family trips, and event travel across Texas with complete flexibility and luxury comfort.",
         "tagline": "Experience the freedom of flying on your terms",
         "features": [
-          "Flexible scheduling (fly on your terms, no fixed schedules)",
-          "On-demand availability",
-          "Pet-friendly cabin options",
-          "Customized in-flight dining (gourmet catering)",
-          "Family-friendly amenities",
-          "Corporate Wi-Fi for remote work",
-          "Privacy and comfort",
-          "Direct flights to luxury destinations (Horseshoe Bay, Gulf Coast)",
-          "Event travel (F1, SXSW, State Fair, Cowboys games)"
+          "Flexible scheduling. Fly on your terms, no fixed schedules.",
+          "On-demand availability.",
+          "Pet-friendly cabin options.",
+          "Customized in-flight dining and gourmet catering.",
+          "Family-friendly amenities.",
+          "Corporate Wi-Fi for remote work.",
+          "Privacy and comfort.",
+          "Direct flights to luxury destinations like Horseshoe Bay and Gulf Coast.",
+          "Event travel for F1, SXSW, State Fair, and Cowboys games."
         ],
         "benefits": [
-          "Time savings (2-hour drive → 15-minute flight)",
-          "Complete privacy and comfort",
-          "Avoid TSA lines and commercial stress",
-          "Remote work capability (onboard Wi-Fi)",
-          "Destination enjoyment (arrive energized, not exhausted)",
-          "Flexible, convenient, luxurious travel"
+          "Time savings. A 2-hour drive becomes a 15-minute flight.",
+          "Complete privacy and comfort.",
+          "Avoid TSA lines and commercial stress.",
+          "Remote work capability with onboard Wi-Fi.",
+          "Destination enjoyment. Arrive energized, not exhausted.",
+          "Flexible, convenient, luxurious travel."
         ],
         "target_audience": [
           "High-net-worth families",
@@ -264,77 +264,77 @@
       "philosophy": "You REST EASY while we handle operational details comprehensively",
       "service_areas": [
         {
-          "area": "Asset Management",
-          "description": "Overall aircraft valuation and oversight"
+          "area": "Asset Management.",
+          "description": "Overall aircraft valuation and oversight."
         },
         {
-          "area": "Flight Crew Management",
-          "description": "Personnel recruitment and administration"
+          "area": "Flight Crew Management.",
+          "description": "Personnel recruitment and administration."
         },
         {
-          "area": "Regulatory Compliance",
-          "description": "FAA and operational standards adherence (14 CFR Parts 91)"
+          "area": "Regulatory Compliance.",
+          "description": "FAA and operational standards adherence."
         },
         {
-          "area": "Maintenance Scheduling",
-          "description": "Preventive and routine service coordination"
+          "area": "Maintenance Scheduling.",
+          "description": "Preventive and routine service coordination."
         },
         {
-          "area": "Hangar and Insurance Coordination",
-          "description": "Facility and coverage arrangements"
+          "area": "Hangar and Insurance Coordination.",
+          "description": "Facility and coverage arrangements."
         },
         {
-          "area": "Financial Oversight",
-          "description": "Budget management and cost tracking"
+          "area": "Financial Oversight.",
+          "description": "Budget management and cost tracking."
         },
         {
-          "area": "Procurement and Vendor Negotiation",
-          "description": "Supply chain optimization"
+          "area": "Procurement and Vendor Negotiation.",
+          "description": "Supply chain optimization."
         },
         {
-          "area": "Aircraft Performance Monitoring",
-          "description": "Operational metrics tracking"
+          "area": "Aircraft Performance Monitoring.",
+          "description": "Operational metrics tracking."
         },
         {
-          "area": "Safety and Risk Management",
-          "description": "Hazard mitigation protocols"
+          "area": "Safety and Risk Management.",
+          "description": "Hazard mitigation protocols."
         },
         {
-          "area": "Fuel Management and Sourcing",
-          "description": "Cost-effective fuel procurement"
+          "area": "Fuel Management and Sourcing.",
+          "description": "Cost-effective fuel procurement."
         },
         {
-          "area": "Travel and Flight Planning Logistics",
-          "description": "Trip coordination"
+          "area": "Travel and Flight Planning Logistics.",
+          "description": "Trip coordination."
         },
         {
-          "area": "Customizable Reporting",
-          "description": "Performance dashboards and analytics"
+          "area": "Customizable Reporting.",
+          "description": "Performance dashboards and analytics."
         },
         {
-          "area": "Administrative Support",
-          "description": "Documentation and scheduling"
+          "area": "Administrative Support.",
+          "description": "Documentation and scheduling."
         },
         {
-          "area": "Concierge and Hospitality Services",
-          "description": "Passenger amenities coordination"
+          "area": "Concierge and Hospitality Services.",
+          "description": "Passenger amenities coordination."
         },
         {
-          "area": "Detailed Record Keeping",
-          "description": "Maintenance and compliance documentation"
+          "area": "Detailed Record Keeping.",
+          "description": "Maintenance and compliance documentation."
         },
         {
-          "area": "Market Value Analysis and Asset Optimization",
-          "description": "Ownership economics and asset performance"
+          "area": "Market Value Analysis and Asset Optimization.",
+          "description": "Ownership economics and asset performance."
         }
       ],
       "benefits": [
-        "Peace of mind with professional management",
-        "Maximized aircraft value",
-        "Reduced operational costs",
-        "Full transparency in operations",
-        "Expert technical support",
-        "Ownership without operational burdens"
+        "Peace of mind with professional management.",
+        "Maximized aircraft value.",
+        "Reduced operational costs.",
+        "Full transparency in operations.",
+        "Expert technical support.",
+        "Ownership without operational burdens."
       ],
       "available": true,
       "popular": true,
@@ -394,20 +394,20 @@
         ]
       },
       "features": [
-        "OEM trained technicians (manufacturer-certified)",
-        "Comprehensive maintenance programs",
-        "Safety-focused inspections",
-        "Preventive maintenance",
-        "24/7 AOG (Aircraft on Ground) emergency services",
-        "Digital maintenance log tracking",
-        "FAA-approved parts sourcing only"
+        "OEM trained technicians, manufacturer-certified.",
+        "Comprehensive maintenance programs.",
+        "Safety-focused inspections.",
+        "Preventive maintenance.",
+        "24/7 AOG Aircraft on Ground emergency services.",
+        "Digital maintenance log tracking.",
+        "FAA-approved parts sourcing only."
       ],
       "benefits": [
-        "Maximum aircraft safety",
-        "Reduced downtime (critical for Permian Basin operations)",
-        "Extended aircraft lifespan",
-        "Regulatory compliance",
-        "Expert technical support"
+        "Maximum aircraft safety.",
+        "Reduced downtime, critical for Permian Basin operations.",
+        "Extended aircraft lifespan.",
+        "Regulatory compliance.",
+        "Expert technical support."
       ],
       "aog_emphasis": "In Permian Basin energy operations, AOG downtime can cost $50,000+/hour. Our 24/7 AOG response (guaranteed <4 hours) minimizes operational losses.",
       "available": true,
@@ -433,20 +433,20 @@
         "showings_and_demonstrations": "Coordination of viewings and test flights for interested buyers"
       },
       "additional_services": [
-        "Transaction negotiation",
-        "Financial and regulatory guidance",
-        "Contract drafting and review",
-        "Brokerage and marketing support",
-        "Document handling and compliance",
-        "Conflict resolution assistance",
-        "Pre-purchase inspections"
+        "Transaction negotiation.",
+        "Financial and regulatory guidance.",
+        "Contract drafting and review.",
+        "Brokerage and marketing support.",
+        "Document handling and compliance.",
+        "Conflict resolution assistance.",
+        "Pre-purchase inspections."
       ],
       "benefits": [
-        "Informed purchasing decisions",
-        "Maximum value in sales",
-        "Reduced transaction time",
-        "Risk mitigation",
-        "Professional representation"
+        "Informed purchasing decisions.",
+        "Maximum value in sales.",
+        "Reduced transaction time.",
+        "Risk mitigation.",
+        "Professional representation."
       ],
       "available": true,
       "popular": false
@@ -490,11 +490,11 @@
         }
       ],
       "benefits": [
-        "Extended component life",
-        "Enhanced safety",
-        "Cost-effective repairs",
-        "Comprehensive inspections",
-        "Expert technical service"
+        "Extended component life.",
+        "Enhanced safety.",
+        "Cost-effective repairs.",
+        "Comprehensive inspections.",
+        "Expert technical service."
       ],
       "available": true,
       "popular": false
@@ -505,46 +505,46 @@
       "category": "Premium Experience",
       "description": "Manages travel details beyond the flight, including luxury ground transportation, customized in-flight dining, and exclusive accommodations.",
       "features": [
-        "Luxury ground transportation coordination",
-        "Customized in-flight dining (gourmet catering)",
-        "Exclusive accommodations booking",
-        "Event access and coordination",
-        "Special requests and personalization"
+        "Luxury ground transportation coordination.",
+        "Customized in-flight dining and gourmet catering.",
+        "Exclusive accommodations booking.",
+        "Event access and coordination.",
+        "Special requests and personalization."
       ]
     }
   },
   "competitive_differentiation": {
     "operator_vs_broker": {
       "dv_aviation_advantages": [
-        "Direct fleet ownership (we maintain to our standards)",
-        "Guaranteed aircraft availability (our planes, your schedule)",
-        "Direct accountability (you deal with the team flying your mission)",
-        "Transparent pricing (no broker markup, itemized billing)",
-        "Safety control (we train our crews, we audit our maintenance)"
+        "Direct fleet ownership. We maintain to our standards.",
+        "Guaranteed aircraft availability. Our planes, your schedule.",
+        "Direct accountability. You deal with the team flying your mission.",
+        "Transparent pricing. No broker markup, itemized billing.",
+        "Safety control. We train our crews, we audit our maintenance."
       ],
       "broker_limitations": [
-        "No fleet ownership (they find planes, you hope they're good)",
-        "Network-dependent availability (your mission waits for their contacts)",
-        "Multiple parties involved (broker → operator → you = communication gaps)",
-        "Hidden markups (broker fees buried in quotes)",
-        "Limited safety oversight (they claim standards, you trust blindly)"
+        "No fleet ownership. They find planes, you hope they're good.",
+        "Network-dependent availability. Your mission waits for their contacts.",
+        "Multiple parties involved. Broker to operator to you means communication gaps.",
+        "Hidden markups. Broker fees buried in quotes.",
+        "Limited safety oversight. They claim standards, you trust blindly."
       ],
       "key_message": "When operational uptime is non-negotiable, direct operator control matters."
     },
     "charter_vs_fractional": {
       "charter_advantages": [
-        "Zero capital investment (no $500K+ fractional buy-in)",
-        "Mission-specific aircraft (Learjet for speed, King Air for access—perfect fit every time)",
-        "No upgrade penalties (need larger jet for guests? No problem, no fees)",
-        "Cost certainty available (fixed rates for recurring Permian routes)",
-        "Cancel without penalty (weather delay? We wait, no financial penalty)"
+        "Zero capital investment. No fractional buy-in required.",
+        "Mission-specific aircraft. Learjet for speed, King Air for access. Perfect fit every time.",
+        "No upgrade penalties. Need larger jet for guests? No problem, no fees.",
+        "Cost certainty available. Fixed rates for recurring Permian routes.",
+        "Cancel without penalty. Weather delay? We wait, no financial penalty."
       ],
       "fractional_limitations": [
-        "$500K - $5M upfront capital (tied to depreciating asset)",
-        "Locked to specific aircraft type (bought 1/8 share of midsize? That's all you get)",
-        "Upgrade penalties common (need bigger jet? Pay surcharges + limited availability)",
-        "Fixed rates only for owned share (limited flexibility)",
-        "Cancellation penalties (weather no-show? You're charged anyway)"
+        "Large upfront capital tied to depreciating asset.",
+        "Locked to specific aircraft type. That's all you get.",
+        "Upgrade penalties common. Need bigger jet? Pay surcharges plus limited availability.",
+        "Fixed rates only for owned share. Limited flexibility.",
+        "Cancellation penalties. Weather no-show? You're charged anyway."
       ],
       "break_even": "For executives flying <50 hours/year, on-demand charter delivers superior economics.",
       "key_message": "Pay-per-mission flexibility without rigid commitments or upgrade penalties."
@@ -557,16 +557,16 @@
   "transparent_pricing": {
     "philosophy": "Private aviation has a glossy marketing problem. We prefer honest conversations.",
     "what_you_pay": [
-      "Aircraft hourly rate (based on selected aircraft + flight time)",
-      "Crew & fuel (itemized, never hidden)",
-      "Landing/handling fees (actual costs, passed through transparently)",
-      "Catering (if requested—your choice, your cost)"
+      "Aircraft hourly rate based on selected aircraft and flight time.",
+      "Crew and fuel, itemized and never hidden.",
+      "Landing and handling fees. Actual costs, passed through transparently.",
+      "Catering if requested. Your choice, your cost."
     ],
     "what_you_dont_pay": [
-      "Broker markups (we're the operator, no middleman)",
-      "Membership fees (no jet card buy-in required)",
-      "Upgrade penalties (mission changes? We adapt, no fees)",
-      "Cancellation fees for weather (safety first, we wait for conditions)"
+      "Broker markups. We're the operator, no middleman.",
+      "Membership fees. No jet card buy-in required.",
+      "Upgrade penalties. Mission changes? We adapt, no fees.",
+      "Cancellation fees for weather. Safety first, we wait for conditions."
     ],
     "quote_process": "Contact us for itemized quote in 60 seconds. All pricing transparent and detailed.",
     "flexible_payment": "Multiple secure payment options customized to client preferences"
