@@ -289,7 +289,7 @@
         // ========================================================================
 
         // Define functions in head to ensure they're available when onclick handlers execute
-        let API_URL, sessionId, userPath;
+        let API_URL, VOICE_API_URL, sessionId, userPath;
 
         function openChat() {
             document.getElementById('chatModal').classList.add('open');
@@ -351,7 +351,8 @@
 
             try {
                 // Use streaming endpoint for typewriter effect (with language parameter)
-                const response = await fetch(`${API_URL}/api/chat/message/stream`, {
+                // API_URL already includes /api/chat/dv-aviation, so append /message/stream
+                const response = await fetch(`${API_URL}/message/stream`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -403,16 +404,35 @@
 
                     for (const line of lines) {
                         if (line.startsWith('data: ')) {
-                            const chunk = line.slice(6); // Remove "data: " prefix
+                            const jsonStr = line.slice(6); // Remove "data: " prefix
 
-                            // Add chunk character by character with delay
-                            for (const char of chunk) {
-                                fullText += char;
-                                p.innerHTML = formatBotMessage(fullText);
-                                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                            try {
+                                // Parse JSON response from unified-chat-platform
+                                const data = JSON.parse(jsonStr);
 
-                                // Small delay for typewriter effect (3ms per character)
-                                await new Promise(resolve => setTimeout(resolve, 3));
+                                // Only process text type messages, skip session info
+                                if (data.type === 'text' && data.text) {
+                                    const chunk = data.text;
+
+                                    // Add chunk character by character with delay
+                                    for (const char of chunk) {
+                                        fullText += char;
+                                        p.innerHTML = formatBotMessage(fullText);
+                                        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                                        // Small delay for typewriter effect (3ms per character)
+                                        await new Promise(resolve => setTimeout(resolve, 3));
+                                    }
+                                }
+                            } catch (e) {
+                                // If not JSON, treat as plain text (fallback for dv-aviation-chat's own endpoint)
+                                const chunk = jsonStr;
+                                for (const char of chunk) {
+                                    fullText += char;
+                                    p.innerHTML = formatBotMessage(fullText);
+                                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                                    await new Promise(resolve => setTimeout(resolve, 3));
+                                }
                             }
                         }
                     }
@@ -501,8 +521,8 @@
                     const base64Audio = reader.result.split(',')[1];
 
                     try {
-                        // Send to STT endpoint for transcription
-                        const sttResponse = await fetch(`${API_URL}/api/voice/transcribe`, {
+                        // Send to STT endpoint for transcription (dv-aviation-chat's own endpoint)
+                        const sttResponse = await fetch(`${VOICE_API_URL}/api/voice/transcribe`, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ audio_base64: base64Audio, session_id: sessionId })
@@ -536,8 +556,8 @@
             try {
                 buttonElement.classList.add('playing');
 
-                // Request TTS audio
-                const response = await fetch(`${API_URL}/api/voice/synthesize`, {
+                // Request TTS audio (dv-aviation-chat's own endpoint)
+                const response = await fetch(`${VOICE_API_URL}/api/voice/synthesize`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ text: text })
@@ -575,6 +595,8 @@
         // Initialize when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
             API_URL = 'https://unified-chat-platform-ouk4d2bbya-uk.a.run.app/api/chat/dv-aviation';
+            // Voice API uses dv-aviation-chat's own endpoints (accepts JSON base64 format)
+            VOICE_API_URL = 'https://dv-aviation-chat-388610795169.us-east4.run.app';
             sessionId = 'mobile-demo-' + Date.now();
             userPath = null;
 

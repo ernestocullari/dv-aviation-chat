@@ -95,7 +95,7 @@ class VoiceRequest(BaseModel):
 
 class TTSRequest(BaseModel):
     text: str
-    voice_id: Optional[str] = "EXAVITQu4vr4xnSDxMaL"  # Sarah (professional female)
+    voice_id: Optional[str] = "N2lVS1w4EtoT3dr4eOWO"  # Callum (American male)
 
 # ============================================================================
 # ENDPOINTS
@@ -413,6 +413,33 @@ async def serve_artemis_brand():
         return FileResponse(logo_path, media_type="image/png")
     else:
         raise HTTPException(status_code=404, detail="Artemis brand not found")
+
+@app.get("/oil-gas")
+async def serve_oil_gas_landing():
+    """Serve Oil & Gas landing page"""
+    page_path = Path(__file__).parent / "static" / "oil-gas.html"
+    if page_path.exists():
+        return FileResponse(page_path, media_type="text/html")
+    else:
+        raise HTTPException(status_code=404, detail="Oil & Gas page not found")
+
+@app.get("/assets/{filename}")
+async def serve_asset(filename: str):
+    """Serve static assets (images)"""
+    asset_path = Path(__file__).parent / "static" / "assets" / filename
+    if asset_path.exists():
+        # Determine content type
+        if filename.endswith('.jpeg') or filename.endswith('.jpg'):
+            media_type = "image/jpeg"
+        elif filename.endswith('.png'):
+            media_type = "image/png"
+        elif filename.endswith('.svg'):
+            media_type = "image/svg+xml"
+        else:
+            media_type = "application/octet-stream"
+        return FileResponse(asset_path, media_type=media_type)
+    else:
+        raise HTTPException(status_code=404, detail=f"Asset not found: {filename}")
 
 # ============================================================================
 # STARTUP
