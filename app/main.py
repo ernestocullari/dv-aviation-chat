@@ -15,7 +15,7 @@ Features:
 ~200 lines total - L7 minimal approach
 """
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse, FileResponse
 from pydantic import BaseModel
@@ -23,10 +23,19 @@ from anthropic import Anthropic
 from elevenlabs.client import ElevenLabs
 import json
 import os
+import time
+import asyncio
 from pathlib import Path
 from typing import Optional
 import logging
 import base64
+import sys
+from app.middleware.request_logger import RequestLoggingMiddleware
+from app.services.chat_log_service import log_chat_message
+
+# Startup test - verify output works
+sys.stdout.write("[STARTUP] dv-aviation-chat starting...\n")
+sys.stdout.flush()
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -52,6 +61,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# L7: Add request logging middleware for analytics and debugging
+app.add_middleware(RequestLoggingMiddleware, service_name="dv-aviation-chat")
+logger.info("Request logging middleware enabled")
 
 # Initialize Anthropic client
 anthropic_api_key = os.getenv("ANTHROPIC_API_KEY")
@@ -129,19 +142,21 @@ async def health_check():
     }
 
 @app.post("/api/chat/message/stream")
-async def chat_stream(request: ChatRequest):
+async def chat_stream(chat_request: ChatRequest, request: Request):
     """
     Streaming chat endpoint (SSE)
     Returns AI response character-by-character for typewriter effect
     """
-    logger.info(f"Chat request - Session: {request.session_id}, Language: {request.language}")
+    start_time = time.time()
+    logger.info(f"Chat request - Session: {chat_request.session_id}, Language: {chat_request.language}")
 
     try:
         # Build system prompt with knowledge base
-        system_prompt = build_system_prompt(request.language)
+        system_prompt = build_system_prompt(chat_request.language)
 
         # Create SSE generator
         async def generate():
+            full_response = ""
             try:
                 # Stream from Claude
                 with client.messages.stream(
@@ -150,14 +165,28 @@ async def chat_stream(request: ChatRequest):
                     system=system_prompt,
                     messages=[{
                         "role": "user",
-                        "content": request.message
+                        "content": chat_request.message
                     }]
                 ) as stream:
                     for text in stream.text_stream:
+                        full_response += text
                         # SSE format: "data: {text}\n\n"
                         yield f"data: {text}\n\n"
 
-                logger.info(f"Response completed for session {request.session_id}")
+                logger.info(f"Response completed for session {chat_request.session_id}")
+
+                # Log to database (fire and forget)
+                latency_ms = int((time.time() - start_time) * 1000)
+                asyncio.create_task(log_chat_message(
+                    session_id=chat_request.session_id,
+                    user_message=chat_request.message,
+                    ai_response=full_response,
+                    language=chat_request.language,
+                    model_used="claude-3-5-haiku-20241022",
+                    latency_ms=latency_ms,
+                    client_ip=request.headers.get("x-forwarded-for", "").split(",")[0].strip() or (request.client.host if request.client else None),
+                    user_agent=request.headers.get("user-agent", "")
+                ))
 
             except Exception as e:
                 logger.error(f"Streaming error: {e}")
@@ -178,15 +207,16 @@ async def chat_stream(request: ChatRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/api/chat/message", response_model=ChatResponse)
-async def chat_non_stream(request: ChatRequest):
+async def chat_non_stream(chat_request: ChatRequest, request: Request):
     """
     Non-streaming chat endpoint
     Returns complete response at once
     """
-    logger.info(f"Non-streaming chat - Session: {request.session_id}")
+    start_time = time.time()
+    logger.info(f"Non-streaming chat - Session: {chat_request.session_id}")
 
     try:
-        system_prompt = build_system_prompt(request.language)
+        system_prompt = build_system_prompt(chat_request.language)
 
         # Get complete response
         message = client.messages.create(
@@ -195,7 +225,7 @@ async def chat_non_stream(request: ChatRequest):
             system=system_prompt,
             messages=[{
                 "role": "user",
-                "content": request.message
+                "content": chat_request.message
             }]
         )
 
@@ -203,9 +233,22 @@ async def chat_non_stream(request: ChatRequest):
 
         logger.info(f"Response: {len(response_text)} chars")
 
+        # Log to database (fire and forget)
+        latency_ms = int((time.time() - start_time) * 1000)
+        asyncio.create_task(log_chat_message(
+            session_id=chat_request.session_id,
+            user_message=chat_request.message,
+            ai_response=response_text,
+            language=chat_request.language,
+            model_used="claude-3-5-haiku-20241022",
+            latency_ms=latency_ms,
+            client_ip=request.headers.get("x-forwarded-for", "").split(",")[0].strip() or (request.client.host if request.client else None),
+            user_agent=request.headers.get("user-agent", "")
+        ))
+
         return ChatResponse(
             response=response_text,
-            session_id=request.session_id
+            session_id=chat_request.session_id
         )
 
     except Exception as e:

@@ -15,3 +15,7 @@ python-multipart==0.0.6
 
 # Logging
 structlog==23.2.0
+google-cloud-logging==3.8.0
+
+# Database (for chat logging)
+asyncpg==0.29.0
